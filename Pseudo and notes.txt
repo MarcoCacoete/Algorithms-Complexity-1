@@ -1,0 +1,18 @@
+﻿
+
+
+
+First algo seems to work but for too long? Havent followed to the end yet.
+
+Second algo idea, pusher.
+
+If array index +1 > array index +2
+
+array index +1 = array index +2 and array index +2 = array index +1
+
+++index
+
+if my logic is correct, it should push values over lower values.
+
+Another idea, find out how many digits the highest int has
+do a pass segregating numbers by digit number then sort those sections
