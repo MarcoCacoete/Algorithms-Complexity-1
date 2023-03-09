@@ -1,0 +1,53 @@
+﻿
+Pusher search algo
+
+/* static void pushSorter(int[] road)
+          {
+              pusher(road);
+              static void pusher(int[] road)
+              {
+                  int count = road.Count();
+                  int counter = 0;
+                  int operations = 0;
+                  while (counter != road.Count() - 1)
+                  {
+                      if (road[counter + 1]<road.Count() && road[counter] > road[counter + 1])
+                      {
+                          int temp = road[counter];
+                          road[counter] = road[counter + 1];
+                          road[counter + 1] = temp;
+                          operations=1;
+                      }
+                      //elseif(road[counter+1]!=null)
+                      if (road[counter + 2]<road.Count() && road[counter] + 1 > road[counter + 2])
+                      {
+                          int temp = road[counter + 1];
+                          road[counter + 1] = road[counter + 2];
+                          road[counter + 2] = temp;
+                          counter++;
+                          operations=1;
+                      }
+                      counter++;
+                  }
+                  foreach (int i in road)
+                  {
+                      Console.WriteLine("Success!" + i);
+                  }
+                  if (operations == 1)
+                  {
+                      pusher(road);
+
+
+                  }
+                  else
+                  {
+                      foreach (int i in road)
+                      {
+                          Console.WriteLine("Success!" + i);
+                      }
+                      Console.WriteLine("end");
+                  }
+
+              }
+
+          }*/

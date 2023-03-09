@@ -9,7 +9,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Algorithms_assessment_1
 {
-    static class Roads
+    class Roads
     {
         public static void loader()
         {
@@ -27,15 +27,43 @@ namespace Algorithms_assessment_1
             roadsArray22048 = File.ReadAllLines("Road_2_2048.txt");
             roadsArray32048 = File.ReadAllLines("Road_3_2048.txt");
 
-            int[] arrayRoad1256 = new int[256];
-            int iterator = 0;
-            while (iterator < 256)
+            Console.WriteLine("Which array would you like to load? ");
+            Console.WriteLine("1: Road 1 256.");
+            Console.WriteLine("2: Road 2 256.");
+            Console.WriteLine("3: Road 3 256.");
+            Console.WriteLine("4: Road 1 2048.");
+            Console.WriteLine("5: Road 2 2048.");
+            Console.WriteLine("6: Road 3 2048.");
+
+            string Choice = Console.ReadLine();
+
+            if( Choice == "1")
+                converter(roadsArray1256,256);
+            if( Choice == "2")
+                converter(roadsArray2256,256);
+            if( Choice == "3")
+                converter(roadsArray3256, 256);
+            if( Choice == "4")
+                converter(roadsArray12048,2048);
+            if( Choice == "5")
+                converter(roadsArray22048,2048);
+            if( Choice == "6")
+                converter(roadsArray32048,2048);
+            
+            //converts strings to ints in 256 arrays
+
+           int[] converter(string[]array,int size)
+           {                
+                int[] intArray = new int[size];
+                int iterator = 0;
+
+                while (iterator < size)      
             {
-                foreach (string s in roadsArray1256)
+                foreach (string s in array)
                 {
                     int number = int.Parse(s);
 
-                    arrayRoad1256[iterator] = number;
+                    intArray[iterator] = number;
 
                     //Console.WriteLine(number);
 
@@ -44,106 +72,11 @@ namespace Algorithms_assessment_1
             }
             Console.WriteLine("end");
             Console.WriteLine();
-             backSorter(arrayRoad1256);
-           // pushSorter(arrayRoad1256);
-        }
-        static void backSorter(int[] road)
-        {
-            int count = road.Count();
-            int counter = 0;
-            int temp;
-            try
-            {
-                while (counter != road.Count() - 1)
-                {
-                    if (road[counter] > road[counter + 1])
-                    {
-                        temp = road[counter];
+            Sort.backSorter(intArray);
+                // pushSorter(arrayRoad1256);
 
-                        road[counter] = road[counter + 1];
-
-                        road[counter + 1] = temp;
-                        counter++;
-                        count--;
-                    }
-                    if (counter > 2 && road[counter - 1] < road[counter - 2])
-                    {
-                        temp = road[counter - 1];
-
-                        road[counter - 1] = road[counter - 2];
-
-                        road[counter - 2] = temp;
-
-                        counter -= 3;
-
-                        count--;
-                    }
-                    if (road[counter] <= road[counter + 1])
-                        counter++;
-                }
+                return intArray;
             }
-            catch
-            {
-                Console.WriteLine("Fail");
-                return;               
-            }
-            foreach (int i in road)
-            {
-                Console.WriteLine(i);
-            }
-            Console.WriteLine("Successfully completed.");
-
-        }
-        /* static void pushSorter(int[] road)
-         {
-             pusher(road);
-             static void pusher(int[] road)
-             {
-                 int count = road.Count();
-                 int counter = 0;
-                 int operations = 0;
-                 while (counter != road.Count() - 1)
-                 {
-                     if (road[counter + 1]<road.Count() && road[counter] > road[counter + 1])
-                     {
-                         int temp = road[counter];
-                         road[counter] = road[counter + 1];
-                         road[counter + 1] = temp;
-                         operations=1;
-                     }
-                     elseif(road[counter+1]!=null)
-                     if (road[counter + 2]<road.Count() && road[counter] + 1 > road[counter + 2])
-                     {
-                         int temp = road[counter + 1];
-                         road[counter + 1] = road[counter + 2];
-                         road[counter + 2] = temp;
-                         counter++;
-                         operations=1;
-                     }
-                     counter++;
-                 }
-                 foreach (int i in road)
-                 {
-                     Console.WriteLine("Success!" + i);
-                 }
-                 if (operations == 1)
-                 {
-                     pusher(road);
-
-
-                 }
-                 else
-                 {
-                     foreach (int i in road)
-                     {
-                         Console.WriteLine("Success!" + i);
-                     }
-                     Console.WriteLine("end");
-                 }
-
-             }
-
-         }*/
-
+        }       
     }
 }

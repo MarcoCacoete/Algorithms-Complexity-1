@@ -16,3 +16,7 @@ if my logic is correct, it should push values over lower values.
 
 Another idea, find out how many digits the highest int has
 do a pass segregating numbers by digit number then sort those sections
+
+idea for search, predictive search, check initial number, compare to highest value in array and lowest do subtraction and addition
+whichever is lower dictates direction, divite lower half or higher half in zones, keep doing same logic as above, finding different 
+values for operations until resul matches.
