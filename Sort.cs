@@ -8,8 +8,8 @@ namespace Algorithms_assessment_1
 {
    class Sort
    {
-       public static int[] backSorter(int[] road,int direction)
-        {
+       public static (int[],int) backSorter(int[] road,int direction)
+       {
             int count = road.Count();
             int counter = 0;
             int temp;
@@ -55,9 +55,33 @@ namespace Algorithms_assessment_1
                     Console.WriteLine(i);
                 }
                 Console.WriteLine("Successfully completed.");
+
+                try
+                {
+                    int number = 10;
+                    int increment = 10;
+                    if (road.Length > 512)
+                    {
+                        number = 50;
+                        increment = 50;
+                    }
+                    while (true)
+                    {                      
+                        
+                        Console.WriteLine("Value "+road[0 + number]+" found at index "+number);
+                        number += increment;
+                        
+                    }
+                }
+                catch
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Finished writing nth values.");
+                }
+
                 Search.search(road,direction);
 
-                return road;
+                return (road, direction);
             }
             else
             {
@@ -101,10 +125,32 @@ namespace Algorithms_assessment_1
                     Console.WriteLine(i);
                 }
                 Console.WriteLine("Successfully completed.");
-                Search.search(road,direction);
+                try
+                {
+                    int number = 10;
+                    int increment = 10;
+                    if (road.Length > 512)
+                    {
+                        number = 50;
+                        increment = 50;
+                    }
+                    while (true)
+                    {
 
-                return road;
-            }
+                        Console.WriteLine("Value " + road[0 + number] + " found at index " + number);
+                        number += increment;
+
+                    }
+                }
+                catch
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Finished writing nth values.");
+                }
+                Search.search(road, direction);
+
+                return (road,direction);
+            }                    
        }
    }
 }

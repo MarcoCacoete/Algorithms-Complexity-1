@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Algorithms_assessment_1
 {
-    class Search
+   public class Search
     {
         public static void search(int[] road,int rev)
         {
@@ -34,22 +34,76 @@ namespace Algorithms_assessment_1
                     return;
                 }
                 else
-                {
-
+                {                                 
                     var foundNumber = binSearch(road, number);
-                    int counter = 0;
                     int adjNumber = 0;
-                    if (foundNumber == -1)
-                    {
-                        counter++;
-                        adjNumber = number - counter;
-                        Console.WriteLine("Number " + number + " not found, attempting to find closest number.");
-                        foundNumber = binSearch(road, adjNumber);
-                        number--;
+
+                    while (foundNumber == -1)
+                    {                                                    
+                            adjNumber = number - 1;
+                            Console.WriteLine("Number " + number + " not found, attempting to find closest number.");
+                            Console.WriteLine();
+
+                            foundNumber = binSearch(road, adjNumber);
+                            number--;                      
                     }
-                    Console.WriteLine("The number " + number + " was found at index " + foundNumber);
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("The number " + number + " was first found at index " + foundNumber);
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine();
+                    Console.WriteLine("Searching for more locations for same value.");
+                    Console.WriteLine();
+
+                    while (true)
+                    {
+                        int up = 0;
+                        int down = 0;
+                        int reset = 0;
+
+                        try
+                        {
+                            if (road[foundNumber - 1] == number && up == 0)
+                            {
+                                while (road[foundNumber - 1] == number)
+                                {
+                                    foundNumber = foundNumber - 1;
+                                    Console.WriteLine("The number " + number + " was also found at index " + foundNumber);
+                                    reset++;
+                                }
+                                up = 1;
+                                
+                            }
+                        }
+                        catch
+                        {
+                        }
+                        foundNumber = foundNumber + reset;
+                        int totalFound = reset + 1;
+                        try
+                        {
+                            if (road[foundNumber + 1] == number && down == 0)
+                            {
+                                while (road[foundNumber + 1] == number)
+                                {
+                                    totalFound++;
+                                    foundNumber = foundNumber + 1;
+                                    Console.WriteLine("The number " + number + " was also found at index " + foundNumber);
+                                }
+                                down = 1;
+                            }
+                        }
+                        catch
+                        {
+                            Console.WriteLine();
+                        }
+                        Console.WriteLine();
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Total occorrunces of number found - " + totalFound);
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine();
+                        break;
+                    }
                 }
-                
             }
             if (rev == 2)
             {
@@ -80,10 +134,66 @@ namespace Algorithms_assessment_1
                         counter++;
                         adjNumber = number - counter;
                         Console.WriteLine("Number " + number + " not found, attempting to find closest number.");
+                        Console.WriteLine();
+
                         foundNumber = binSearchR(road, adjNumber);
                         number--;
                     }
-                    Console.WriteLine("The number " + number + " was found at index " + foundNumber);
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("The number " + number + " was first found at index " + foundNumber);
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine();
+                    Console.WriteLine("Searching for more locations for same value.");
+                    Console.WriteLine();
+
+                    while (true)
+                    {
+                        int up = 0;
+                        int down = 0;
+                        int reset = 0;
+                        try
+                        {                            
+                            if (road[foundNumber - 1] == number && up == 0)
+                            {
+                                while (road[foundNumber - 1] == number)
+                                {
+                                    foundNumber = foundNumber - 1;
+                                    Console.WriteLine("The number " + number + " was also found at index " + foundNumber);
+                                    reset++;
+                                }
+                                up = 1;
+                            }
+                        }
+                        catch
+                        {
+                            Console.WriteLine();
+                        }
+                        foundNumber = foundNumber + reset;
+                        int totalFound = reset + 1;
+                        try
+                        {
+                            if (road[foundNumber + 1] == number && down == 0)
+                            {
+                                while (road[foundNumber + 1] == number)
+                                {
+                                    totalFound++;
+                                    foundNumber = foundNumber + 1;
+                                    Console.WriteLine("The number " + number + " was also found at index " + foundNumber);
+                                }
+                                down = 1;
+                            }
+                        }
+                        catch
+                        {
+                            Console.WriteLine();
+                        }
+                        Console.WriteLine();
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Total occorrunces of number found - " + totalFound);
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine();
+                        break;
+                    }
                 }
             }
         }

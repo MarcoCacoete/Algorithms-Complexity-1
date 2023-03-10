@@ -51,3 +51,21 @@ Pusher search algo
               }
 
           }*/
+
+
+
+
+          /* while (true)
+                    {
+                        if (road[foundNumber - 1] == number)
+                        {
+                            foundNumber = foundNumber - 1;
+                            Console.WriteLine("The number " + number + " was also found at " + foundNumber + " index. ");
+
+                        }
+                        else if (road[foundNumber + -1] == number)
+                        {
+                            foundNumber = foundNumber - 1;
+                            Console.WriteLine("The number " + number + " was also found at " + foundNumber + " index. ");
+                        }
+                    }*/

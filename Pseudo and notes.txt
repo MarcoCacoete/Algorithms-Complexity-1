@@ -20,3 +20,20 @@ do a pass segregating numbers by digit number then sort those sections
 idea for search, predictive search, check initial number, compare to highest value in array and lowest do subtraction and addition
 whichever is lower dictates direction, divite lower half or higher half in zones, keep doing same logic as above, finding different 
 values for operations until resul matches.
+
+Idea for counting and displaying indexes for all indexes with same value.
+
+while array[index+1] == array [index]
+	print " array [index] also found at array [index+x etc]"
+same deal for elements before index but with index -1
+
+Idea for merger.
+
+int[] merger()
+                {
+                    int[] merged = new int[]
+
+                    int[] 1 = int[] 1 append int[] 2
+
+                    return int[]1;
+                }

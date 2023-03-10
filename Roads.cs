@@ -34,6 +34,8 @@ namespace Algorithms_assessment_1
             Console.WriteLine("4: Road 1 2048.");
             Console.WriteLine("5: Road 2 2048.");
             Console.WriteLine("6: Road 3 2048.");
+            Console.WriteLine("7: Merged 1 and 3");
+            Console.WriteLine("8: Merged 4 and 6");
 
             string Choice = Console.ReadLine();
 
@@ -49,10 +51,19 @@ namespace Algorithms_assessment_1
                 converter(roadsArray22048,2048);
             if( Choice == "6")
                 converter(roadsArray32048,2048);
-            
-            //converts strings to ints in 256 arrays
+            if (Choice == "7")
+            {
+                string[] merged = roadsArray1256.Concat(roadsArray3256).ToArray();
+                converter(merged, merged.Length);
+            }
+            if (Choice == "8")
+            {
+                string[] merged = roadsArray12048.Concat(roadsArray32048).ToArray();
+                converter(merged, merged.Length);
+            }
 
-           int[] converter(string[]array,int size)
+            //converts strings to ints in 256 index arrays
+            int[] converter(string[]array,int size)
            {                
                 int[] intArray = new int[size];
                 int iterator = 0;
@@ -82,9 +93,8 @@ namespace Algorithms_assessment_1
 
                 Console.WriteLine("2: Descending.");
 
-
                 int choice = int.Parse(Console.ReadLine());
-
+               
                 Sort.backSorter(intArray,choice);
 
                 // pushSorter(arrayRoad1256);

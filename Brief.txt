@@ -1,0 +1,186 @@
+﻿Contribution to Final Module Mark: 60%
+
+This assignment asks you to design and implement a Search and Sort application. In particular,
+you are to create a Console Application using C#, which will help with the analysis of Road 
+Traffic data. This assignment has mandatory (1-3) and additional (4-7) tasks, which will allow you
+to achieve highermarks.
+
+Your Console Application should be able to provide the following functionality to the user:
+
+1. Read the files “Road_1_256.txt”, “Road_2_256.txt”, and “Road_3_256.txt”, into                   Done
+individual Arrays
+
+2. Sort in ascending and descending order and display every 10th value of the selected				Done
+Array(s).
+
+3. Search the selected Array for a user-defined value, if the value exists, then provide its		Half done
+location (if it appears more than once then provide ALL the locations) otherwise provide
+an error message.
+
+4. Repeat the previous task, but if the value does not exist then provide the value(s) and			Done
+location(s) of its nearest value.
+
+5. Your Console Application should be in position to input the files with length 2048. Then			Done
+repeat Tasks 2 to 4 and display the corresponding values for all the selected arrays, for the
+2048 length array(s) display every 50th value.
+
+6. For additional marks, Merge the Road_1_256.txt and Road_3_256.txt files. Then repeat				Done
+Tasks 2 to 4 and display the corresponding values.
+
+7. For top marks repeat task 6 using the files with length 2048.									Done
+
+Enhancing your submission for top marks.
+Undertake a comparative evaluation for all the searching and sorting tasks by using different
+Searching or Sorting algorithms. You should display the number of steps that each algorithm
+performed.
+
+You should NOT use any built-in sorting and searching functions from any built-in
+or external C# library.
+Learning Outcomes Assessed:
+On successful completion of this assessment item a student will have demonstrated competence in the
+following areas:
+[LO1] Understand the time and space efficiency of algorithms and how tocalculate/estimate/evaluate and
+improve them.
+[LO2] Determine an appropriate algorithmic approach to a problem.
+[LO3] Ability to select from a range of possible options, to provide justification for that selection, and to
+implement the algorithm in a particular context.
+Knowledge & Skills Assessed: See guidance notes for further information
+Subject Specific Knowledge, Skills and Understanding: e.g. Literature searching,
+Referencing, Numeracy, Project Planning, Techniques and Skills Subject-specific
+knowledge.
+Professional Graduate Skills: e.g. independence and personal responsibility, adaptability, verbal
+communication, written communication, creativity, critical thinking, IT skills, self-reflection, 
+problem solving, effective time management, working under pressure to meet deadlines,
+negotiation skills, leadership.
+Emotional Intelligence: e.g. self-awareness, self-management, awareness of others,managing and
+supporting others, motivation, resilience, self-confidence.
+Assessment Submission Instructions:
+The deadline for submission of this work is included in the School Submission dates on
+Blackboard.
+You should submit your work as a single “.ZIP” file to the “Assessment 1 Supporting” 
+section, and a report (in .PDF format only) to the “Assessment 1” section. Use of other 
+compression formats such as RAR files will be penalised.
+a) The ZIP file which is uploaded to Assessment 1 Supporting should contain the project
+files, accompanying input files, any output files, executable and source code filesfor your 
+application. The project should be able to be opened in Visual Studio (or any other IDE
+that you have used – Mono for example).
+b) The pdf report to be uploaded to Assessment 1 should contain:
+a. A contents page
+b. A basic design for the application (1 page) including:
+i. A written description of the application.
+ii. Comment about the implementation of tasks 2 to 7.
+c. A description of the algorithmic choices you made for the application (1 
+page)including:
+i. Justification of selecting and implementing particular searching and
+sorting algorithms for your application.
+ii. An evaluation of the time and space efficiency of the searching, and
+sorting parts, as well as your program overall.
+iii. Provide tables of the number of steps for the searching and sorting
+algorithms you used in respect to the size of the arrays.
+d. A Reference list showing items you have used in your learning that are
+correctlycited in the body of the report
+Date for Return of Feedback:
+Format for Assessment:
+You should submit your work as a single “.ZIP” file to the “Assessment 1 Supporting” 
+section, and a report (in .PDF format only) to the “Assessment 1” section. Use of other 
+compression formats such as RAR files will be penalised.
+Feedback Format:
+Written feedback via blackboard. Face to face feedback can be given upon request fromstudent.
+Additional Information for Completion of Assessment:
+This assessment is an individually assessed component. Your work must be presented according to the 
+Lincoln School of Computer Science guidelines for the presentation of assessed written work. Please 
+make sure you have a clear understanding of the grading principles for this component as detailed in 
+the accompanying Criterion Reference Grid. If you are unsure about any aspect of this assessment 
+component, please seek the advice of a member of the delivery team.
+Assessment Support Information:
+Assessment Support workshops will take during the week(s) leading to the submission.
+Important Information on Dishonesty & Plagiarism:
+University of Lincoln Regulations define plagiarism as 'the passing off of another person'sthoughts, ideas, 
+writings or images as one's own...Examples of plagiarism include the unacknowledged use of another
+person's material whether in original or summary form.
+Plagiarism also includes the copying of another student's work'.
+Plagiarism is a serious offence and is treated by the University as a form of academic dishonesty. Students
+are directed to the University Regulations for details of the procedures andpenalties involved.
+For further information, see www.plagiarism.org
+University of Lincoln Assessment 
+Framework Assessment Briefing Template 
+2019-2020 Guidance Notes
+Overview
+The assessment briefing template is designed to ensure that all students are given information, advice and 
+support to successfully complete their module assessments and to reach their full academic potential. 
+Consistency and clarity of communication are the guiding principles for completion of assessment briefings, 
+and it is for these purposes that this template has been devised.There are naturally differences in wording and 
+expression in different subject disciplines, as well as different standards and competencies as defined by 
+Professional Statutory and Regulatory Bodies (PSRBs). Therefore, identical documents are not expected. 
+However the good practice guidance provided is seen as a minimum for assessments across the institution.
+Assessment briefings should be made available to all students and staff involved in the assessmentcycle as 
+well as the relevant external examiners. Briefings, where possible should be made face-to-face with a student 
+cohort and as a minimum included in the Module Briefing/Handbook. In additionto information on written 
+briefings, appropriate support should be made available for students completing assessments to clarify and 
+explain. An important facet of successful assessment is the promotion of assessment literacy amongst the 
+student body. All efforts should be made to ensure that students are aware of the nature and purpose of 
+assessments in a timely fashion and have chance to complete them in the formative mode.
+Good educational practice also requires those conducting assessment to ensure that their assessment briefings
+are as clear as possible to the student body. Partnership working with studentsto review briefings and ensure 
+they are fit for purpose is to be encouraged
+These guidance notes are to be read alongside the policy and practice documents that comprise theUniversity 
+of Lincoln Assessment Framework. It is expected that all staff with oversight and involvement in assessment
+will have read these documents.
+Completion of Assessment Briefing Template
+Module Code & Title: Give Module Code and Title as per current Programme Specification.
+Contribution to Final Module Mark: Specify the contribution made by the mark of this
+assessment to the final module mark as a percentage.
+Description of Assessment Task and Purpose: Information provided here should represent aclear and 
+concise answer to the students’ common question – “What do we have to do and why this type of
+assessment?” Examples may include:
+“You are required to submit an essay, in no more than 2,000 words, that discusses thepotential 
+benefits of using stem cells in medical treatments. The purpose of this assessment is to judge 
+your knowledge of the subject area, an ability to find and evaluate accurate and reliable 
+information/evidence and present it in a clear, concise and scientific manner.”
+You are required to prepare and deliver an oral presentation on the social and political contexts
+of the English Civil War (1642-1651). The presentation should be of 10 minutes duration and 
+you should be prepared for a 5 minute period to answer questions from the audience. The 
+purpose of this assessment is to judge your knowledge of the subject area and your ability to 
+communicate your understanding to an audience of yourpeers.
+Learning Outcomes Assessed: Specify the Module Learning Outcomes assessed as per the current 
+Programme and Module specifications. This section may also be used to explain the linkage of learning
+outcomes to any PSRB standard or competency.
+Knowledge & Skills Assessed: Here it is important to inform students of the contribution of this
+assessment to the development and acquisition of knowledge, skills and behaviours that are keyoutcomes
+of the module and programme. Refer to the following when providing this information.
+Subject Specific Knowledge, Skills and Understanding: e.g. Literature searching,
+Referencing, Numeracy, Health and Safety, Project Planning, Techniques and SkillsSubjectspecific knowledge.
+Professional Graduate Skills: e.g. independence and personal responsibility, adaptability, verbal 
+communication, written communication, creativity, critical thinking, ITskills, self-reflection and 
+life-long learning, problem solving, group or team skills, effective time management, working 
+under pressure to meet deadlines, negotiation skills, leadership.
+Emotional Intelligence: e.g. self-awareness, self-management, awareness of others,
+managing and supporting others, motivation, resilience, self-confidence.
+Career-focused Skills: An understanding of the range of graduate careers, skills and attributes
+required by employers, a range of strategies to present skills and attributes toemployers.
+Assessment Submission Instructions: Here the purpose is to describe as clearly as possible,the date for 
+submission of the assessment as well as how students will submit their work. For example: “you are 
+required to submit your assessment before 3pm on Thursday 11th July 2019 using the online assessment 
+submission facility on the Module Blackboard site. Pay careful attentions to instructions provided at the 
+time of submission” or “your presentation will take place on Monday 8
+th July in the xxx, you should
+submit your PowerPoint slides to xxx at least one week in advance to ensure that presentations run
+smoothly on the day.”
+Date for Return of Feedback: Insert a date on or before the 15-day deadline for feedbackreturn
+Format for Assessment: Here in this section you are able to clearly specify the format expected for the 
+submitted work, such as file type, media type, fonts, spacing, margins, layouts and referencing 
+conventions accepted. If there are exemplars of the assessment available, thisis the place to provide a
+link to clarify the formatting instructions.
+Marking Criteria for Assessment: This is one of the most important components of an effective
+assessment briefing. Students should be provided ideally with a set of generic marking criteria employed 
+by the School or Subject Discipline as well as a criterion reference grid that shows the criteria utilised in 
+awarding the different categories of pass marks for the assessment in question(which may relate to either
+award classifications or percentage ranges).
+Feedback Format: It is important that our students are aware of the format of the feedback they will
+receive on their assessments. In this section you should lay out the nature of the feedback
+e.g. verbally in teaching session (give date), one-to-one with tutor, attached feedback sheet,video or
+audio. Good practice suggests that face to face feedback is the gold standard.
+Additional Information for Completion of Assessment: Here is the place for any further guidance 
+for students to prepare them for the completion of the assessment task. This may include links to
+learning resources either in print or online. Common resources may relate tosubjects such as Essay
+Writing, Reading and Language Skills and Referencing techniques.
