@@ -58,21 +58,35 @@ namespace Algorithms_assessment_1
                 int iterator = 0;
 
                 while (iterator < size)      
-            {
-                foreach (string s in array)
                 {
-                    int number = int.Parse(s);
+                    foreach (string s in array)
+                    {
+                        int number = int.Parse(s);
 
-                    intArray[iterator] = number;
+                        intArray[iterator] = number;
 
-                    //Console.WriteLine(number);
+                        //Console.WriteLine(number);
 
-                    iterator++;
+                        iterator++;
+                    }
                 }
-            }
-            Console.WriteLine("end");
-            Console.WriteLine();
-            Sort.backSorter(intArray);
+                Console.WriteLine("end");
+
+                Console.WriteLine();
+
+                Console.WriteLine("Would you like to sort ascending or descending?");
+
+                Console.WriteLine();
+
+                Console.WriteLine("1: Ascending.");
+
+                Console.WriteLine("2: Descending.");
+
+
+                int choice = int.Parse(Console.ReadLine());
+
+                Sort.backSorter(intArray,choice);
+
                 // pushSorter(arrayRoad1256);
 
                 return intArray;
