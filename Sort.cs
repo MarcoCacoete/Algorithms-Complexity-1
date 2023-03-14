@@ -7,41 +7,41 @@ using System.Threading.Tasks;
 namespace Algorithms_assessment_1
 {
    class Sort
-   {
-       public static (int[],int) backSorter(int[] road,int direction)
+   {//sorting method
+       public static (int[],int) backSorter(int[] road,int direction,int searchType)
        {
             int count = road.Count();
             int counter = 0;
             int temp;
-            if (direction == 1)
+            if (direction == 1)                                            //direction 1 sorts in ascending mode
             {
                 try
                 {
-                    while (counter != road.Count() - 1)
+                    while (counter != road.Count() - 1)                    //counter to prevent out of index
                     {
-                        if (road[counter] > road[counter + 1])
+                        if (road[counter] > road[counter + 1])             //checks number 1 index in front of index 0 and if larger, shifts positions
                         {
                             temp = road[counter];
 
                             road[counter] = road[counter + 1];
 
                             road[counter + 1] = temp;
-                            counter++;
+                            counter++;                                     //whenever a shift happens it is registered in this counter, this advances the operation
                             count--;
                         }
-                        if (counter >= 2 && road[counter - 1] < road[counter - 2])
+                        if (counter >= 2 && road[counter - 1] < road[counter - 2])  //second if to check if previous numbers are also higher than new number
                         {
                             temp = road[counter - 1];
 
-                            road[counter - 1] = road[counter - 2];
+                            road[counter - 1] = road[counter - 2];          //same algorithm repeats 
 
                             road[counter - 2] = temp;
 
-                            counter -= 2;
+                            counter -= 2;                                   //resets counter everytime to retroactively go back to check all previous values
 
                             count--;
                         }
-                        if (road[counter] <= road[counter + 1])
+                        if (road[counter] <= road[counter + 1])             //this prevents an infinite loop by advancing count
                             counter++;
                     }
                 }
@@ -56,7 +56,7 @@ namespace Algorithms_assessment_1
                 }
                 Console.WriteLine("Successfully completed.");
 
-                try
+                try                                                                             //method for printing every nth value (10th or 50th)
                 {
                     int number = 10;
                     int increment = 10;
@@ -79,11 +79,12 @@ namespace Algorithms_assessment_1
                     Console.WriteLine("Finished writing nth values.");
                 }
 
-                Search.search(road,direction);
+                Search.search(road,direction,searchType);
 
                 return (road, direction);
             }
-            else
+            else                                                                        //same algorithm as above but for descending sort, small changs made to operators
+                                                                                        //to make it work
             {
                 try
                 {
@@ -127,7 +128,7 @@ namespace Algorithms_assessment_1
                 Console.WriteLine("Successfully completed.");
                 try
                 {
-                    int number = 10;
+                    int number = 10;                                                        //same as above for printing nth values
                     int increment = 10;
                     if (road.Length > 512)
                     {
@@ -147,7 +148,7 @@ namespace Algorithms_assessment_1
                     Console.WriteLine();
                     Console.WriteLine("Finished writing nth values.");
                 }
-                Search.search(road, direction);
+                Search.search(road, direction,searchType);
 
                 return (road,direction);
             }                    

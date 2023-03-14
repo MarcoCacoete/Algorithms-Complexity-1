@@ -20,7 +20,7 @@ namespace Algorithms_assessment_1
             string[] roadsArray22048;
             string[] roadsArray32048;
 
-            roadsArray1256 = File.ReadAllLines("Road_1_256.txt");
+            roadsArray1256 = File.ReadAllLines("Road_1_256.txt");               //loads all txt files into arrays
             roadsArray2256 = File.ReadAllLines("Road_2_256.txt");
             roadsArray3256 = File.ReadAllLines("Road_3_256.txt");
             roadsArray12048 = File.ReadAllLines("Road_1_2048.txt");
@@ -37,7 +37,7 @@ namespace Algorithms_assessment_1
             Console.WriteLine("7: Merged 1 and 3");
             Console.WriteLine("8: Merged 4 and 6");
 
-            string Choice = Console.ReadLine();
+            string Choice = Console.ReadLine();                                              // converts string arrays to int arrays
 
             if( Choice == "1")
                 converter(roadsArray1256,256);
@@ -51,7 +51,7 @@ namespace Algorithms_assessment_1
                 converter(roadsArray22048,2048);
             if( Choice == "6")
                 converter(roadsArray32048,2048);
-            if (Choice == "7")
+            if (Choice == "7")                                                                  //merges and concatenates arrays if options 7 or 8, then converts type of array
             {
                 string[] merged = roadsArray1256.Concat(roadsArray3256).ToArray();
                 converter(merged, merged.Length);
@@ -63,7 +63,7 @@ namespace Algorithms_assessment_1
             }
 
             //converts strings to ints in 256 index arrays
-            int[] converter(string[]array,int size)
+            int[] converter(string[]array,int size)                                     //method for converting string array to int array
            {                
                 int[] intArray = new int[size];
                 int iterator = 0;
@@ -94,8 +94,17 @@ namespace Algorithms_assessment_1
                 Console.WriteLine("2: Descending.");
 
                 int choice = int.Parse(Console.ReadLine());
-               
-                Sort.backSorter(intArray,choice);
+
+                Console.WriteLine();
+
+                Console.WriteLine("Which search would you like to do?");
+                Console.WriteLine("1: Binary search");
+                Console.WriteLine("2: Sequential search");
+                Console.WriteLine();
+                int searchT = int.Parse(Console.ReadLine());
+
+
+                Sort.backSorter(intArray,choice,searchT);
 
                 // pushSorter(arrayRoad1256);
 
