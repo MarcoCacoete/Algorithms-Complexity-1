@@ -148,7 +148,20 @@ namespace Algorithms_assessment_1
                 }
                 else
                 {
-                    var foundNumber = BinSearchR(road, number);
+                    int foundNumber = 0;
+
+                    if (searchAlgo == 1)
+                    {
+                        foundNumber = BinSearch(road, number);   //calls up binary search for value selected on array selected
+                    }
+                    if (searchAlgo == 2)
+                    {
+                        foundNumber = SeqSearch(road, number);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Pick correct option.");
+                    }
                     int counter = 0;
                     int adjNumber = 0;
                     if (foundNumber == -1)
@@ -158,8 +171,16 @@ namespace Algorithms_assessment_1
                         Console.WriteLine("Number " + number + " not found, attempting to find closest number.");
                         Console.WriteLine();
 
-                        foundNumber = BinSearchR(road, adjNumber);
-                        number--;
+                        if (searchAlgo == 1)
+                        {
+                            foundNumber = BinSearch(road, adjNumber);
+                            number--;
+                        }
+                        if (searchAlgo == 2)
+                        {
+                            foundNumber = SeqSearch(road, adjNumber);
+                            number--;
+                        }
                     }
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("The number " + number + " was first found at index " + foundNumber);
@@ -279,8 +300,7 @@ namespace Algorithms_assessment_1
         }
       static int SeqSearch(int[] x,int y)
         {
-            int counter = 0;
-            int occurences = 0;
+            int counter = 0;            
 
             while (counter <= x.Count()-1)
             {
@@ -289,22 +309,7 @@ namespace Algorithms_assessment_1
 
                     if (i == y)
                     {
-                        occurences++;
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("The number " + y + " was first found at index " + counter);
-                        Console.ForegroundColor= ConsoleColor.White;
-                        Console.WriteLine();
-                        while (x[counter + 1] == y)
-                        {
-                            occurences++;
-                            counter++;
-                            Console.WriteLine("The number " + y + " was also found at index " + counter);                            
-                        }
-                        Console.WriteLine();
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Total occurences of found value: " + occurences);
-                        Console.ForegroundColor = ConsoleColor.White;
-                        System.Environment.Exit(0);
+                        return counter;
                     }
                     
                     counter++;
