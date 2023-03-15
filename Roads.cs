@@ -37,7 +37,7 @@ namespace Algorithms_assessment_1
             Console.WriteLine("7: Merged 1 and 3");
             Console.WriteLine("8: Merged 4 and 6");
 
-            string Choice = Console.ReadLine();                                              // converts string arrays to int arrays
+            string Choice = Console.ReadLine();                // converts string arrays to int arrays
 
             if( Choice == "1")
                 converter(roadsArray1256,256);
@@ -51,7 +51,7 @@ namespace Algorithms_assessment_1
                 converter(roadsArray22048,2048);
             if( Choice == "6")
                 converter(roadsArray32048,2048);
-            if (Choice == "7")                                                                  //merges and concatenates arrays if options 7 or 8, then converts type of array
+            if (Choice == "7")                                 //merges and concatenates arrays if options 7 or 8, then converts type of array
             {
                 string[] merged = roadsArray1256.Concat(roadsArray3256).ToArray();
                 converter(merged, merged.Length);
@@ -67,7 +67,7 @@ namespace Algorithms_assessment_1
            {                
                 int[] intArray = new int[size];
                 int iterator = 0;
-
+                
                 while (iterator < size)      
                 {
                     foreach (string s in array)
@@ -76,18 +76,13 @@ namespace Algorithms_assessment_1
 
                         intArray[iterator] = number;
 
-                        //Console.WriteLine(number);
-
                         iterator++;
                     }
                 }
-                Console.WriteLine("end");
 
                 Console.WriteLine();
 
                 Console.WriteLine("Would you like to sort ascending or descending?");
-
-                Console.WriteLine();
 
                 Console.WriteLine("1: Ascending.");
 
@@ -97,16 +92,24 @@ namespace Algorithms_assessment_1
 
                 Console.WriteLine();
 
-                Console.WriteLine("Which search would you like to do?");
-                Console.WriteLine("1: Binary search");
-                Console.WriteLine("2: Sequential search");
+                Console.WriteLine("Choose sorting algorithm.");
+                Console.WriteLine("1: Insertion sort.");
+                Console.WriteLine("2: Bubble sort.");
+                Console.WriteLine("3");
+                Console.WriteLine("4");
+                int sortChoice = int.Parse(Console.ReadLine());
                 Console.WriteLine();
+
+                Console.WriteLine("Which search would you like to do?");
+                Console.WriteLine("1: Binary search.");
+                Console.WriteLine("2: Sequential search.");
                 int searchT = int.Parse(Console.ReadLine());
+                Console.WriteLine();
 
-
-                Sort.backSorter(intArray,choice,searchT);
-
-                // pushSorter(arrayRoad1256);
+                if (sortChoice==1)
+                    Sort.backSorter(intArray,choice,searchT);
+                if(sortChoice == 2)
+                    Sort.pushSorter(intArray,choice,searchT);
 
                 return intArray;
             }

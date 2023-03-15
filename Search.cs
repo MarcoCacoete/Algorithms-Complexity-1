@@ -37,20 +37,22 @@ namespace Algorithms_assessment_1
                 else
                 {
                     int foundNumber = 0;
-
-                    if (searchAlgo == 1)
+                    try
                     {
-                         foundNumber = BinSearch(road, number);   //calls up binary search for value selected on array selected
+                        if (searchAlgo == 1)
+                        {
+                            foundNumber = BinSearch(road, number);   //calls up binary search for value selected on array selected
+                        }
+                        if (searchAlgo == 2)
+                        {
+                            foundNumber = SeqSearch(road, number);
+                        }
                     }
-                    if(searchAlgo ==2)
+                    catch
                     {
-                        foundNumber = SeqSearch(road, number);
+                        Console.WriteLine("Enter correct option.");
+                        search(road,rev,searchAlgo);
                     }
-                    else
-                    {
-                        Console.WriteLine("Pick correct option.");
-                    }
-                       
                     int adjNumber = 0;
 
                     while (foundNumber == -1)                                   //when search fails to find value, value is adjusted to closest value to be found
@@ -93,7 +95,6 @@ namespace Algorithms_assessment_1
                                     reset++;
                                 }
                                 up = 1;
-                                
                             }
                         }
                         catch
@@ -150,18 +151,24 @@ namespace Algorithms_assessment_1
                 {
                     int foundNumber = 0;
 
-                    if (searchAlgo == 1)
+                    try
                     {
-                        foundNumber = BinSearch(road, number);   //calls up binary search for value selected on array selected
+                        if (searchAlgo == 1)
+                        {
+                            foundNumber = BinSearchR(road, number);   //calls up binary search for value selected on array selected
+                        }
+                        if (searchAlgo == 2)
+                        {
+                            foundNumber = SeqSearch(road, number);
+                        }
                     }
-                    if (searchAlgo == 2)
+                    catch
                     {
-                        foundNumber = SeqSearch(road, number);
+                        Console.WriteLine("Enter correct option.");
+
+                        search(road, rev, searchAlgo);
                     }
-                    else
-                    {
-                        Console.WriteLine("Pick correct option.");
-                    }
+                    
                     int counter = 0;
                     int adjNumber = 0;
                     if (foundNumber == -1)
@@ -173,7 +180,7 @@ namespace Algorithms_assessment_1
 
                         if (searchAlgo == 1)
                         {
-                            foundNumber = BinSearch(road, adjNumber);
+                            foundNumber = BinSearchR(road, adjNumber);
                             number--;
                         }
                         if (searchAlgo == 2)

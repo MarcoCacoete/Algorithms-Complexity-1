@@ -27,13 +27,7 @@ while array[index+1] == array [index]
 	print " array [index] also found at array [index+x etc]"
 same deal for elements before index but with index -1
 
-Idea for merger.
+TODO
+Implement error handling for every input.
 
-int[] merger()
-                {
-                    int[] merged = new int[]
-
-                    int[] 1 = int[] 1 append int[] 2
-
-                    return int[]1;
                 }

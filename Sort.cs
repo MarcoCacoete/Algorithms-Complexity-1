@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assessment_1_Algo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Algorithms_assessment_1
 {
-   class Sort
-   {//sorting method
-       public static (int[],int) backSorter(int[] road,int direction,int searchType)
-       {
+    class Sort
+    {//sorting method
+        public static (int[], int) backSorter(int[] road, int direction, int searchType)
+        {
             int count = road.Count();
             int counter = 0;
             int temp;
@@ -26,7 +27,9 @@ namespace Algorithms_assessment_1
                             road[counter] = road[counter + 1];
 
                             road[counter + 1] = temp;
-                            counter++;                                     //whenever a shift happens it is registered in this counter, this advances the operation
+
+                            counter++;             
+                                                                                    //whenever a shift happens it is registered in this counter, this advances the operation
                             count--;
                         }
                         if (counter >= 2 && road[counter - 1] < road[counter - 2])  //second if to check if previous numbers are also higher than new number
@@ -56,102 +59,142 @@ namespace Algorithms_assessment_1
                 }
                 Console.WriteLine("Successfully completed.");
 
-                try                                                                             //method for printing every nth value (10th or 50th)
-                {
-                    int number = 10;
-                    int increment = 10;
-                    if (road.Length > 512)
-                    {
-                        number = 50;
-                        increment = 50;
-                    }
-                    while (true)
-                    {                      
-                        
-                        Console.WriteLine("Value "+road[0 + number]+" found at index "+number);
-                        number += increment;
-                        
-                    }
-                }
-                catch
-                {
-                    Console.WriteLine();
-                    Console.WriteLine("Finished writing nth values.");
-                }
+                Printing.print(road);
 
-                Search.search(road,direction,searchType);
+                Search.search(road, direction, searchType);
 
                 return (road, direction);
             }
             else                                                                        //same algorithm as above but for descending sort, small changs made to operators
-                                                                                        //to make it work
+            {                                                                           //to make it work
+            try
             {
-                try
+                while (counter != road.Count() - 1)
                 {
-                    while (counter != road.Count() - 1)
+                    if (road[counter] < road[counter + 1])
                     {
-                        if (road[counter] < road[counter + 1])
-                        {
-                            temp = road[counter];
+                        temp = road[counter];
 
-                            road[counter] = road[counter + 1];
+                        road[counter] = road[counter + 1];
 
-                            road[counter + 1] = temp;
-                            counter++;
-                            count--;
-                        }
-                        if (counter >= 2 && road[counter - 1] > road[counter - 2])
-                        {
-                            temp = road[counter - 1];
+                        road[counter + 1] = temp;
 
-                            road[counter - 1] = road[counter - 2];
+                        counter++;
 
-                            road[counter - 2] = temp;
-
-                            counter -= 2;
-
-                            count--;
-                        }
-                        if (road[counter] >= road[counter + 1])
-                            counter++;
+                        count--;
                     }
-                }
-                catch
-                {
-                    Console.WriteLine("Fail");
-                    Console.ReadLine();
-                }
-                foreach (int i in road)
-                {
-                    Console.WriteLine(i);
-                }
-                Console.WriteLine("Successfully completed.");
-                try
-                {
-                    int number = 10;                                                        //same as above for printing nth values
-                    int increment = 10;
-                    if (road.Length > 512)
+                    if (counter >= 2 && road[counter - 1] > road[counter - 2])
                     {
-                        number = 50;
-                        increment = 50;
-                    }
-                    while (true)
-                    {
+                        temp = road[counter - 1];
 
-                        Console.WriteLine("Value " + road[0 + number] + " found at index " + number);
-                        number += increment;
+                        road[counter - 1] = road[counter - 2];
 
+                        road[counter - 2] = temp;
+
+                        counter -= 2;
+
+                        count--;
                     }
+                    if (road[counter] >= road[counter + 1])
+                        counter++;
                 }
-                catch
+            }
+            catch
+            {
+                Console.WriteLine("Fail");
+                Console.ReadLine();
+            }
+            foreach (int i in road)
+            {
+                Console.WriteLine(i);
+            }
+            Console.WriteLine("Successfully completed.");
+
+            Printing.print(road);
+
+            Search.search(road, direction, searchType);
+
+            return (road, direction);
+            }
+        }
+        public static (int[], int) pushSorter(int[] road, int direction, int searchType)
+        {
+            if (direction == 1)
+            {
+                PusherA(road);
+            }
+            if (direction == 2)
+            {
+                PusherD(road);  
+            }
+
+            (int[], int) PusherA(int[] road)
+            {
+                int count = road.Count();
+                int counter = 0;
+                int operations = 0;
+                while (counter != road.Count() - 1)
                 {
-                    Console.WriteLine();
-                    Console.WriteLine("Finished writing nth values.");
+                    if (road[counter + 1] < road.Count() && road[counter] > road[counter + 1])
+                    {
+                        int temp = road[counter];
+                        road[counter] = road[counter + 1];
+                        road[counter + 1] = temp;
+                        operations = 1;
+                    }
+                    counter++;
+                }                
+                if (operations == 1)
+                {
+                    PusherA(road);
                 }
-                Search.search(road, direction,searchType);
+                else
+                {
+                    foreach (int i in road)
+                    {
+                        Console.WriteLine(i);
+                    }
+                    Console.WriteLine("end");
+                }
+                return (road, direction);
+            }     
+        
+            (int[], int) PusherD(int[] road)
+            {
+                int count = road.Count();
+                int counter = 0;
+                int operations = 0;
+                while (counter != road.Count() - 1)
+                {
+                    if (road[counter + 1] < road.Count() && road[counter] < road[counter + 1])
+                    {
+                        int temp = road[counter];
+                        road[counter] = road[counter + 1];
+                        road[counter + 1] = temp;
+                        operations = 1;
+                    }
 
-                return (road,direction);
-            }                    
-       }
-   }
+                    counter++;
+                }               
+                if (operations == 1)
+                {
+                    PusherD(road);
+                }
+                else
+                {
+                    foreach (int i in road)
+                    {
+                        Console.WriteLine(i);
+                    }
+                    Console.WriteLine("end");
+                }
+                return (road, direction);
+            }
+            Printing.print(road);
+            Search.search(road, direction, searchType);
+            return (road, direction);
+        }        
+    }
 }
+
+
