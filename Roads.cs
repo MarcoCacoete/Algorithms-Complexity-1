@@ -80,20 +80,7 @@ namespace Algorithms_assessment_1
                         iterator++;
                     }
                 }
-
-                Console.WriteLine();
-
-                Console.WriteLine("Would you like to sort ascending or descending?");
-
-                Console.WriteLine("1: Ascending.");
-
-                Console.WriteLine("2: Descending.");
-
-                int DirectionChoice = int.Parse(Console.ReadLine());
-
-                Console.WriteLine();
-
-                Console.WriteLine("Choose sorting algorithm.");
+                Console.WriteLine("Which type of sort would you like to use?");
                 Console.WriteLine("1: Insertion sort.");
                 Console.WriteLine("2: Bubble sort.");
                 Console.WriteLine("3: Merge sort.");
@@ -101,7 +88,14 @@ namespace Algorithms_assessment_1
                 int sortChoice = int.Parse(Console.ReadLine());
                 Console.WriteLine();
 
-                Console.WriteLine("Which search would you like to do?");
+                Console.WriteLine();
+                Console.WriteLine("Would you like to sort ascending or descending order?");
+                Console.WriteLine("1: Ascending.");
+                Console.WriteLine("2: Descending.");
+                int DirectionChoice = int.Parse(Console.ReadLine());
+                Console.WriteLine();                
+
+                Console.WriteLine("Which type of search would you like to do?");
                 Console.WriteLine("1: Binary search.");
                 Console.WriteLine("2: Sequential search.");
                 int searchT = int.Parse(Console.ReadLine());
@@ -115,6 +109,7 @@ namespace Algorithms_assessment_1
                 {
                     Sort.SortArray(intArray, 0, intArray.Length - 1);
                     Printing.print(intArray);
+                    Search.search(intArray, DirectionChoice, searchT);
                     
                 }
                 return intArray;
