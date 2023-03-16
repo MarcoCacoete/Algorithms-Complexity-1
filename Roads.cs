@@ -28,7 +28,9 @@ namespace Algorithms_assessment_1
             roadsArray22048 = File.ReadAllLines("Road_2_2048.txt");
             roadsArray32048 = File.ReadAllLines("Road_3_2048.txt");
 
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("Which array would you like to load? ");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("1: Road 1 256.");
             Console.WriteLine("2: Road 2 256.");
             Console.WriteLine("3: Road 3 256.");
@@ -63,7 +65,7 @@ namespace Algorithms_assessment_1
                 converter(merged, merged.Length);
             }
 
-            //converts strings to ints in 256 index arrays
+            //converts strings to ints in arrays
             int[] converter(string[]array,int size)                                     //method for converting string array to int array
            {                
                 int[] intArray = new int[size];
@@ -80,22 +82,27 @@ namespace Algorithms_assessment_1
                         iterator++;
                     }
                 }
+                Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("Which type of sort would you like to use?");
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("1: Insertion sort.");
                 Console.WriteLine("2: Bubble sort.");
                 Console.WriteLine("3: Merge sort.");
-                Console.WriteLine("4: Placeholder.");
+                Console.WriteLine("4: Quicksort.");
                 int sortChoice = int.Parse(Console.ReadLine());
                 Console.WriteLine();
 
-                Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("Would you like to sort ascending or descending order?");
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("1: Ascending.");
                 Console.WriteLine("2: Descending.");
                 int DirectionChoice = int.Parse(Console.ReadLine());
-                Console.WriteLine();                
+                Console.WriteLine();
 
+                Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("Which type of search would you like to do?");
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("1: Binary search.");
                 Console.WriteLine("2: Sequential search.");
                 int searchT = int.Parse(Console.ReadLine());
@@ -107,12 +114,35 @@ namespace Algorithms_assessment_1
                     Sort.pushSorter(intArray,DirectionChoice,searchT);
                 if (sortChoice == 3)
                 {
-                    Sort.SortArray(intArray, 0, intArray.Length - 1);
-                    Printing.print(intArray);
-                    Search.search(intArray, DirectionChoice, searchT);
-                    
+                    if (DirectionChoice == 1)
+                    {
+                        Sort.SortArray(intArray, 0, intArray.Length - 1);
+                        Printing.print(intArray);
+                        Search.search(intArray, DirectionChoice, searchT);
+                    }
+                    else
+                    {
+                        Sort.SortArrayR(intArray, 0, intArray.Length - 1);
+                        Printing.print(intArray);
+                        Search.search(intArray, DirectionChoice, searchT);
+                    }
                 }
-                return intArray;
+                if (sortChoice == 4)
+                {
+                    if (DirectionChoice == 1)
+                    {
+                        Sort.QuickSort(intArray, 0, intArray.Length - 1);
+                        Printing.print(intArray);
+                        Search.search(intArray, DirectionChoice, searchT);
+                    }
+                    else
+                    {
+                        Sort.QuickSortR(intArray, 0, intArray.Length - 1);
+                        Printing.print(intArray);
+                        Search.search(intArray, DirectionChoice, searchT);
+                    }
+                }
+                    return intArray;
             }
         }       
     }

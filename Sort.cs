@@ -244,6 +244,129 @@ namespace Algorithms_assessment_1
             }
             return array;
         }
+        public static void MergeArrayR(int[] array, int left, int middle, int right)
+        {
+            var leftArrayLength = middle - left + 1;
+            var rightArrayLength = right - middle;
+            var leftTempArray = new int[leftArrayLength];
+            var rightTempArray = new int[rightArrayLength];
+            int i, j;
+
+            for (i = 0; i < leftArrayLength; ++i)
+                leftTempArray[i] = array[left + i];
+            for (j = 0; j < rightArrayLength; ++j)
+                rightTempArray[j] = array[middle + 1 + j];
+
+            i = 0;
+            j = 0;
+            int k = left;
+
+            while (i < leftArrayLength && j < rightArrayLength)
+            {
+                if (leftTempArray[i] >= rightTempArray[j])
+                {
+                    array[k++] = leftTempArray[i++];
+                }
+                else
+                {
+                    array[k++] = rightTempArray[j++];
+                }
+            }
+
+            while (i < leftArrayLength)
+            {
+                array[k++] = leftTempArray[i++];
+            }
+
+            while (j < rightArrayLength)
+            {
+                array[k++] = rightTempArray[j++];
+            }
+        }
+        public static int[] SortArrayR(int[] array, int left, int right)
+        {
+            if (left < right)
+            {
+                int middle = left + (right - left) / 2;
+                SortArrayR(array, left, middle);
+                SortArrayR(array, middle + 1, right);
+                MergeArrayR(array, left, middle, right);
+            }
+            return array;
+        }
+
+        public static int[] QuickSort(int[] array, int leftIndex, int rightIndex)
+        {
+            var i = leftIndex;
+            var j = rightIndex;
+            var pivot = array[leftIndex];
+
+            while (i <= j)
+            {
+                while (array[i] < pivot)
+                {
+                    i++;
+                }
+
+                while (array[j] > pivot)
+                {
+                    j--;
+                }
+
+                if (i <= j)
+                {
+                    int temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                    i++;
+                    j--;
+                }
+            }
+
+            if (leftIndex < j)
+                QuickSort(array, leftIndex, j);
+
+            if (i < rightIndex)
+                QuickSort(array, i, rightIndex);
+
+            return array;
+        }
+        public static int[] QuickSortR(int[] array, int leftIndex, int rightIndex)
+        {
+            var i = leftIndex;
+            var j = rightIndex;
+            var pivot = array[leftIndex];
+
+            while (i <= j)
+            {
+                while (array[i] > pivot)
+                {
+                    i++;
+                }
+
+                while (array[j] < pivot)
+                {
+                    j--;
+                }
+
+                if (i <= j)
+                {
+                    int temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                    i++;
+                    j--;
+                }
+            }
+
+            if (leftIndex < j)
+                QuickSortR(array, leftIndex, j);
+            
+            if (i < rightIndex)
+                QuickSortR(array, i, rightIndex);
+
+            return array;
+        }
     }
 }
 
