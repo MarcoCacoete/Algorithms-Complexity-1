@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assessment_1_Algo;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -88,15 +89,15 @@ namespace Algorithms_assessment_1
 
                 Console.WriteLine("2: Descending.");
 
-                int choice = int.Parse(Console.ReadLine());
+                int DirectionChoice = int.Parse(Console.ReadLine());
 
                 Console.WriteLine();
 
                 Console.WriteLine("Choose sorting algorithm.");
                 Console.WriteLine("1: Insertion sort.");
                 Console.WriteLine("2: Bubble sort.");
-                Console.WriteLine("3");
-                Console.WriteLine("4");
+                Console.WriteLine("3: Merge sort.");
+                Console.WriteLine("4: Placeholder.");
                 int sortChoice = int.Parse(Console.ReadLine());
                 Console.WriteLine();
 
@@ -107,10 +108,15 @@ namespace Algorithms_assessment_1
                 Console.WriteLine();
 
                 if (sortChoice==1)
-                    Sort.backSorter(intArray,choice,searchT);
+                    Sort.backSorter(intArray,DirectionChoice,searchT);
                 if(sortChoice == 2)
-                    Sort.pushSorter(intArray,choice,searchT);
-
+                    Sort.pushSorter(intArray,DirectionChoice,searchT);
+                if (sortChoice == 3)
+                {
+                    Sort.SortArray(intArray, 0, intArray.Length - 1);
+                    Printing.print(intArray);
+                    
+                }
                 return intArray;
             }
         }       

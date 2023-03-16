@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,16 +20,22 @@ namespace Assessment_1_Algo
                     number = 50;
                     increment = 50;
                 }
+                foreach (int i in sortedArray)
+                {
+                    Console.WriteLine(i);
+                }
+                Console.WriteLine("end");
                 while (true)
                 {
 
                     Console.WriteLine("Value " + sortedArray[0 + number] + " found at index " + number);
                     number += increment;
 
-                }
+                }               
             }
             catch
             {
+                
                 Console.WriteLine();
                 Console.WriteLine("Finished writing nth values.");
             }
