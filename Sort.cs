@@ -12,33 +12,38 @@ namespace Assessment_1_Algo
     {                   //sorting methods
         public static (int[], int) BackSorter(int[] IntArray, int Direction)
         {
-            int Count = IntArray.Count();
             int Counter = 0;
             int Temporary;
+            int Efficiency=0;
             if (Direction == 1)                                            //Direction 1 sorts in ascending mode
             {
+                Efficiency++;
                 try
                 {
                     while (Counter != IntArray.Count() - 1)                    //Counter to prevent out of index
                     {
+                        Efficiency++;
                         if (IntArray[Counter] > IntArray[Counter + 1])         //Checks number 1 index in front of index 0 and if larger, shifts positions
                         {
+                            Efficiency++;
                             Temporary = IntArray[Counter];
                             IntArray[Counter] = IntArray[Counter + 1];
                             IntArray[Counter + 1] = Temporary;
                             Counter++;                                      //Whenever a shift happens it is registered in this Counter, this advances the operation
-                            Count--;
                         }
                         if (Counter >= 2 && IntArray[Counter - 1] < IntArray[Counter - 2])  //Second if to check if previous numbers are also higher than new number
                         {
+                            Efficiency++;
                             Temporary = IntArray[Counter - 1];
                             IntArray[Counter - 1] = IntArray[Counter - 2];          //same algorithm repeats 
                             IntArray[Counter - 2] = Temporary;
                             Counter -= 2;                                   //resets Counter everytime to retroactively go back to check all previous values
-                            Count--;
                         }
-                        if (IntArray[Counter] <= IntArray[Counter + 1])             //this prevents an infinite loop by advancing Count
-                            Counter++;
+                        if (IntArray[Counter] <= IntArray[Counter + 1])
+                        {
+                            Efficiency++;
+                            Counter++;                                      //this prevents an infinite loop by advancing Count
+                        }           
                     }
                 }
                 catch
@@ -46,64 +51,83 @@ namespace Assessment_1_Algo
                     Console.WriteLine("Fail");
                     Console.ReadLine();
                 }                
-                Console.WriteLine("Successfully completed.");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Total amount of steps: "+Efficiency);
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("Press any key to continue.");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.ReadLine();
                 return (IntArray, Direction);
             }
-            else                                                                    //same algorithm as above but for descending sort, small changs made to operators
-            {                                                                       //to make it work
-            try
-            {
-                while (Counter != IntArray.Count() - 1)
+            else                                                     //same algorithm as above but for descending sort, small changes made to operators
+            {                                                        //to make it work
+                Efficiency++;
+                try
                 {
-                    if (IntArray[Counter] < IntArray[Counter + 1])
+                    while (Counter != IntArray.Count() - 1)
                     {
-                        Temporary = IntArray[Counter];
-                        IntArray[Counter] = IntArray[Counter + 1];
-                        IntArray[Counter + 1] = Temporary;
-                        Counter++;
-                        Count--;
+                        Efficiency++;
+                        if (IntArray[Counter] < IntArray[Counter + 1])
+                        {
+                            Efficiency++;
+                            Temporary = IntArray[Counter];
+                            IntArray[Counter] = IntArray[Counter + 1];
+                            IntArray[Counter + 1] = Temporary;
+                            Counter++;
+                        }
+                        if (Counter >= 2 && IntArray[Counter - 1] > IntArray[Counter - 2])
+                        {
+                            Efficiency++;
+                            Temporary = IntArray[Counter - 1];
+                            IntArray[Counter - 1] = IntArray[Counter - 2];
+                            IntArray[Counter - 2] = Temporary;
+                            Counter -= 2;
+                        }
+                        if (IntArray[Counter] >= IntArray[Counter + 1])
+                        {
+                            Efficiency++;
+                            Counter++;
+                        }
                     }
-                    if (Counter >= 2 && IntArray[Counter - 1] > IntArray[Counter - 2])
-                    {
-                        Temporary = IntArray[Counter - 1];
-                        IntArray[Counter - 1] = IntArray[Counter - 2];
-                        IntArray[Counter - 2] = Temporary;
-                        Counter -= 2;
-                        Count--;
-                    }
-                    if (IntArray[Counter] >= IntArray[Counter + 1])
-                        Counter++;
                 }
-            }
-            catch
-            {
-                Console.WriteLine("Fail");
-                Console.ReadLine();
-            }
-            Console.WriteLine("Successfully completed.");
-            return (IntArray, Direction);
+                catch
+                {
+                    Console.WriteLine("Fail");
+                    Console.ReadLine();
+                }
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Total amount of steps: "+Efficiency);
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("Press any key to continue.");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.ReadLine();          
+                return (IntArray, Direction);
             }
         }
         public static (int[], int) PushSorter(int[] IntArray, int Direction)
         {
+            int Efficiency = 0;
             if (Direction == 1)
             {
-                PusherA(IntArray);
+                Efficiency++;
+                PusherA();
             }
             if (Direction == 2)
             {
-                PusherD(IntArray);  
+                Efficiency++;
+                PusherD();  
             }
 
-            (int[], int) PusherA(int[] IntArray)
+            void PusherA()
             {
-                int Count = IntArray.Count();
                 int Counter = 0;
                 int Operations = 0;
                 while (Counter < IntArray.Count() - 1)
                 {
+                    Efficiency++;
                     if (IntArray[Counter] > IntArray[Counter + 1])
                     {
+                        Efficiency++;
                         int Temporary = IntArray[Counter];
                         IntArray[Counter] = IntArray[Counter + 1];
                         IntArray[Counter + 1] = Temporary;
@@ -113,20 +137,21 @@ namespace Assessment_1_Algo
                 }                
                 if (Operations == 1)
                 {
-                    PusherA(IntArray);
+                    Efficiency++;
+                    PusherA();
                 }                
-                return (IntArray, Direction);
             }     
         
-            (int[], int) PusherD(int[] IntArray)
+            void PusherD()
             {
-                int Count = IntArray.Count();
                 int Counter = 0;
                 int Operations = 0;
                 while (Counter != IntArray.Count() - 1)
                 {
+                    Efficiency++;
                     if (IntArray[Counter] < IntArray[Counter + 1])
                     {
+                        Efficiency++;
                         int Temporary = IntArray[Counter];
                         IntArray[Counter] = IntArray[Counter + 1];
                         IntArray[Counter + 1] = Temporary;
@@ -136,13 +161,19 @@ namespace Assessment_1_Algo
                 }               
                 if (Operations == 1)
                 {
-                    PusherD(IntArray);
+                    Efficiency++;
+                    PusherD();
                 }               
-                return (IntArray, Direction);
             }
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Total amount of steps: "+Efficiency);
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Press any key to continue.");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadLine();  
             return (IntArray, Direction);
         }
-        public static void MergeArray(int[] IntArray, int Left, int Middle, int Right)
+        public static void MergeArray(int[] IntArray, int Left, int Middle, int Right,int Efficiency)
         {
             var LeftArrayLength = Middle - Left + 1;
             var RightArrayLength = Right - Middle;
@@ -158,54 +189,67 @@ namespace Assessment_1_Algo
             int k = Left;
             while (i < LeftArrayLength && j < RightArrayLength)
             {
+                Efficiency++;
                 if (LeftTemporaryArray[i] <= RightTemporaryArray[j])
                 {
+                    Efficiency++;
                     IntArray[k++] = LeftTemporaryArray[i++];
                 }
                 else
                 {
+                    Efficiency++;
                     IntArray[k++] = RightTemporaryArray[j++];
                 }
             }
             while (i < LeftArrayLength)
             {
+                Efficiency++;
                 IntArray[k++] = LeftTemporaryArray[i++];
             }
             while (j < RightArrayLength)
             {
+                Efficiency++;
                 IntArray[k++] = RightTemporaryArray[j++];
             }
         }
-        public static void SortArray(int[] IntArray,int Direction)
+        public static void SortArray(int[] IntArray,int Direction,int Efficiency)
         {
             if (Direction == 1)
-                SortArrayAscending(IntArray, 0, IntArray.Length - 1);
+            {
+                Efficiency++;
+                SortArrayAscending(IntArray, 0, IntArray.Length - 1,Efficiency);
+            }
             else
-                SortArrayDescending(IntArray, 0, IntArray.Length - 1);
+            {
+                Efficiency++;
+                SortArrayDescending(IntArray, 0, IntArray.Length - 1,Efficiency);
+            }
         }
-        public static int[] SortArrayAscending(int[] IntArray, int Left, int Right)
+        public static int[] SortArrayAscending(int[] IntArray, int Left, int Right,int Efficiency)
         {
             if (Left < Right)
             {
+                Efficiency++;
                 int Middle = Left + (Right - Left) / 2;
-                SortArrayAscending(IntArray, Left, Middle);
-                SortArrayAscending(IntArray, Middle + 1, Right);
-                MergeArray(IntArray, Left, Middle, Right);
+                SortArrayAscending(IntArray, Left, Middle,Efficiency);
+                SortArrayAscending(IntArray, Middle + 1, Right,Efficiency);
+                MergeArray(IntArray, Left, Middle, Right,Efficiency);
             }
             return IntArray;
         }
-        public static int[] SortArrayDescending(int[] IntArray, int Left, int Right)
+        public static int[] SortArrayDescending(int[] IntArray, int Left, int Right,int Efficiency)
         {
             if (Left < Right)
             {
+                Efficiency++;
                 int Middle = Left + (Right - Left) / 2;
-                SortArrayDescending(IntArray, Left, Middle);
-                SortArrayDescending(IntArray, Middle + 1, Right);
-                MergeArrayR(IntArray, Left, Middle, Right);
+                SortArrayDescending(IntArray, Left, Middle, Efficiency);
+                SortArrayDescending(IntArray, Middle + 1, Right,Efficiency);
+                MergeArrayR(IntArray, Left, Middle, Right,Efficiency);
             }
             return IntArray;
         }
-        public static void MergeArrayR(int[] IntArray, int Left, int Middle, int Right)
+        public static int MergeArrayR(int[] IntArray, int Left, int Middle, int Right,int Efficiency)
         {
             var LeftArrayLength = Middle - Left + 1;
             var RightArrayLength = Right - Middle;
@@ -221,48 +265,65 @@ namespace Assessment_1_Algo
             int k = Left;
             while (i < LeftArrayLength && j < RightArrayLength)
             {
+                Efficiency++;
                 if (LeftTemporaryArray[i] >= RightTemporaryArray[j])
                 {
+                    Efficiency++;
                     IntArray[k++] = LeftTemporaryArray[i++];
                 }
                 else
                 {
+                    Efficiency++;
                     IntArray[k++] = RightTemporaryArray[j++];
                 }
             }
             while (i < LeftArrayLength)
             {
+                Efficiency++;
                 IntArray[k++] = LeftTemporaryArray[i++];
             }
             while (j < RightArrayLength)
             {
+                Efficiency++;
                 IntArray[k++] = RightTemporaryArray[j++];
             }
+
+            return Efficiency;
         }
-        public static void QuickSort(int[] IntArray,int Direction)
+        public static int QuickSort(int[] IntArray,int Direction,int Efficiency)
         {
             if (Direction == 1)
-                QuickSortAscending(IntArray, 0, IntArray.Length - 1);
+            {
+                Efficiency++;
+                QuickSortAscending(IntArray, 0, IntArray.Length - 1,Efficiency);
+            }
             else
-                QuickSortDescending(IntArray, 0, IntArray.Length - 1);
-
-            static int[] QuickSortAscending(int[] IntArray, int LeftIndex, int RightIndex)
+            {
+                Efficiency++;
+                QuickSortDescending(IntArray, 0, IntArray.Length - 1,Efficiency);
+            }
+            
+            static int QuickSortAscending(int[] IntArray, int LeftIndex, int RightIndex,int Efficiency)
             {
                 var i = LeftIndex;
                 var j = RightIndex;
                 var Pivot = IntArray[LeftIndex];
                 while (i <= j)
                 {
+                    Efficiency++;
                     while (IntArray[i] < Pivot)
                     {
+                        Efficiency++;
                         i++;
                     }
                     while (IntArray[j] > Pivot)
                     {
+                        Efficiency++;
                         j--;
                     }
                     if (i <= j)
                     {
+                        Efficiency++;
                         int Temporary = IntArray[i];
                         IntArray[i] = IntArray[j];
                         IntArray[j] = Temporary;
@@ -270,29 +331,41 @@ namespace Assessment_1_Algo
                         j--;
                     }
                 }
+
                 if (LeftIndex < j)
-                    QuickSortAscending(IntArray, LeftIndex, j);
+                {
+                    Efficiency++;
+                    QuickSortAscending(IntArray, LeftIndex, j,Efficiency);
+                }
+
                 if (i < RightIndex)
-                    QuickSortAscending(IntArray, i, RightIndex);
-                return IntArray;
+                {
+                    Efficiency++;
+                    QuickSortAscending(IntArray, i, RightIndex,Efficiency);
+                }
+                return Efficiency;
             }
-            static int[] QuickSortDescending(int[] IntArray, int LeftIndex, int RightIndex)
+            static int QuickSortDescending(int[] IntArray, int LeftIndex, int RightIndex,int Efficiency)
             {
                 var i = LeftIndex;
                 var j = RightIndex;
                 var Pivot = IntArray[LeftIndex];
                 while (i <= j)
                 {
+                    Efficiency++;
                     while (IntArray[i] > Pivot)
                     {
+                        Efficiency++;
                         i++;
                     }
                     while (IntArray[j] < Pivot)
                     {
+                        Efficiency++;
                         j--;
                     }
                     if (i <= j)
                     {
+                        Efficiency++;
                         int Temporary = IntArray[i];
                         IntArray[i] = IntArray[j];
                         IntArray[j] = Temporary;
@@ -300,12 +373,21 @@ namespace Assessment_1_Algo
                         j--;
                     }
                 }
+
                 if (LeftIndex < j)
-                    QuickSortDescending(IntArray, LeftIndex, j);
+                {
+                    Efficiency++;
+                    QuickSortDescending(IntArray, LeftIndex, j,Efficiency);
+                }
+
                 if (i < RightIndex)
-                    QuickSortDescending(IntArray, i, RightIndex);
-                return IntArray;
+                {
+                    Efficiency++;
+                    QuickSortDescending(IntArray, i, RightIndex,Efficiency);
+                }
+                return Efficiency;
             }
+            return Efficiency;
         }
     }
 }

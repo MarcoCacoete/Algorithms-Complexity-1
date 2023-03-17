@@ -52,7 +52,7 @@ namespace Assessment_1_Algo
                 int Middle = (HalfLeft + HalfRight) / 2;
                 while (HalfLeft <= HalfRight)
                 {
-                    Middle = (HalfLeft + HalfRight) / 2;           //finds Middle point of array
+                    Middle = (HalfLeft + HalfRight) / 2;    //finds Middle point of array
                     if (num == array[Middle])               //best case result if value is Middle of array or when it eventually is the Middle result or not
                     {
                         return Middle;
@@ -93,11 +93,11 @@ namespace Assessment_1_Algo
                     int up = 0;
                     int down = 0;
                     int reset = 0;
-                    try                                                                              //next few blocks of code are for finding all occurences of a value in array
+                    try                                                   //next few blocks of code are for finding all occurrences of a value in array
                     {
                         if (road[foundNumber - 1] == Number && up == 0)
                         {
-                            while (road[foundNumber - 1] == Number)                         //first it checks up the array for more of the same value
+                            while (road[foundNumber - 1] == Number)       //first it checks up the array for more of the same value
                             {
                                 foundNumber = foundNumber - 1;
                                 Console.WriteLine("The Number " + Number + " was also found at index " + foundNumber);
@@ -109,7 +109,7 @@ namespace Assessment_1_Algo
                     catch
                     {
                         Console.WriteLine();
-                        Console.WriteLine("No more occurences found in this direction.");
+                        Console.WriteLine("No more occurrences found in this direction.");
                         Console.WriteLine();
                     }
                     foundNumber = foundNumber + reset;
