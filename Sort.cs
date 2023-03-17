@@ -10,11 +10,13 @@ namespace Assessment_1_Algo
 {
     class Sort
     {                   //sorting methods
+
+        public static int Efficiency = 0;
         public static (int[], int) BackSorter(int[] IntArray, int Direction)
         {
             int Counter = 0;
+            Efficiency = 0;
             int Temporary;
-            int Efficiency=0;
             if (Direction == 1)                                            //Direction 1 sorts in ascending mode
             {
                 Efficiency++;
@@ -106,7 +108,7 @@ namespace Assessment_1_Algo
         }
         public static (int[], int) PushSorter(int[] IntArray, int Direction)
         {
-            int Efficiency = 0;
+            Efficiency = 0;
             if (Direction == 1)
             {
                 Efficiency++;
@@ -173,7 +175,7 @@ namespace Assessment_1_Algo
             Console.ReadLine();  
             return (IntArray, Direction);
         }
-        public static void MergeArray(int[] IntArray, int Left, int Middle, int Right,int Efficiency)
+        public static void MergeArray(int[] IntArray, int Left, int Middle, int Right)
         {
             var LeftArrayLength = Middle - Left + 1;
             var RightArrayLength = Right - Middle;
@@ -212,44 +214,44 @@ namespace Assessment_1_Algo
                 IntArray[k++] = RightTemporaryArray[j++];
             }
         }
-        public static void SortArray(int[] IntArray,int Direction,int Efficiency)
+        public static void SortArray(int[] IntArray,int Direction)
         {
             if (Direction == 1)
             {
                 Efficiency++;
-                SortArrayAscending(IntArray, 0, IntArray.Length - 1,Efficiency);
+                SortArrayAscending(IntArray, 0, IntArray.Length - 1);
             }
             else
             {
                 Efficiency++;
-                SortArrayDescending(IntArray, 0, IntArray.Length - 1,Efficiency);
+                SortArrayDescending(IntArray, 0, IntArray.Length - 1);
             }
         }
-        public static int[] SortArrayAscending(int[] IntArray, int Left, int Right,int Efficiency)
+        public static int[] SortArrayAscending(int[] IntArray, int Left, int Right)
         {
             if (Left < Right)
             {
                 Efficiency++;
                 int Middle = Left + (Right - Left) / 2;
-                SortArrayAscending(IntArray, Left, Middle,Efficiency);
-                SortArrayAscending(IntArray, Middle + 1, Right,Efficiency);
-                MergeArray(IntArray, Left, Middle, Right,Efficiency);
+                SortArrayAscending(IntArray, Left, Middle);
+                SortArrayAscending(IntArray, Middle + 1, Right);
+                MergeArray(IntArray, Left, Middle, Right);
             }
             return IntArray;
         }
-        public static int[] SortArrayDescending(int[] IntArray, int Left, int Right,int Efficiency)
+        public static int[] SortArrayDescending(int[] IntArray, int Left, int Right)
         {
             if (Left < Right)
             {
                 Efficiency++;
                 int Middle = Left + (Right - Left) / 2;
-                SortArrayDescending(IntArray, Left, Middle, Efficiency);
-                SortArrayDescending(IntArray, Middle + 1, Right,Efficiency);
-                MergeArrayR(IntArray, Left, Middle, Right,Efficiency);
+                SortArrayDescending(IntArray, Left, Middle);
+                SortArrayDescending(IntArray, Middle + 1, Right);
+                MergeArrayR(IntArray, Left, Middle, Right);
             }
             return IntArray;
         }
-        public static int MergeArrayR(int[] IntArray, int Left, int Middle, int Right,int Efficiency)
+        public static int MergeArrayR(int[] IntArray, int Left, int Middle, int Right)
         {
             var LeftArrayLength = Middle - Left + 1;
             var RightArrayLength = Right - Middle;
@@ -290,20 +292,20 @@ namespace Assessment_1_Algo
 
             return Efficiency;
         }
-        public static int QuickSort(int[] IntArray,int Direction,int Efficiency)
+        public static int QuickSort(int[] IntArray,int Direction)
         {
             if (Direction == 1)
             {
                 Efficiency++;
-                QuickSortAscending(IntArray, 0, IntArray.Length - 1,Efficiency);
+                QuickSortAscending(IntArray, 0, IntArray.Length - 1);
             }
             else
             {
                 Efficiency++;
-                QuickSortDescending(IntArray, 0, IntArray.Length - 1,Efficiency);
+                QuickSortDescending(IntArray, 0, IntArray.Length - 1);
             }
             
-            static int QuickSortAscending(int[] IntArray, int LeftIndex, int RightIndex,int Efficiency)
+            static int QuickSortAscending(int[] IntArray, int LeftIndex, int RightIndex)
             {
                 var i = LeftIndex;
                 var j = RightIndex;
@@ -335,17 +337,17 @@ namespace Assessment_1_Algo
                 if (LeftIndex < j)
                 {
                     Efficiency++;
-                    QuickSortAscending(IntArray, LeftIndex, j,Efficiency);
+                    QuickSortAscending(IntArray, LeftIndex, j);
                 }
 
                 if (i < RightIndex)
                 {
                     Efficiency++;
-                    QuickSortAscending(IntArray, i, RightIndex,Efficiency);
+                    QuickSortAscending(IntArray, i, RightIndex);
                 }
                 return Efficiency;
             }
-            static int QuickSortDescending(int[] IntArray, int LeftIndex, int RightIndex,int Efficiency)
+            static int QuickSortDescending(int[] IntArray, int LeftIndex, int RightIndex)
             {
                 var i = LeftIndex;
                 var j = RightIndex;
@@ -377,13 +379,13 @@ namespace Assessment_1_Algo
                 if (LeftIndex < j)
                 {
                     Efficiency++;
-                    QuickSortDescending(IntArray, LeftIndex, j,Efficiency);
+                    QuickSortDescending(IntArray, LeftIndex, j);
                 }
 
                 if (i < RightIndex)
                 {
                     Efficiency++;
-                    QuickSortDescending(IntArray, i, RightIndex,Efficiency);
+                    QuickSortDescending(IntArray, i, RightIndex);
                 }
                 return Efficiency;
             }

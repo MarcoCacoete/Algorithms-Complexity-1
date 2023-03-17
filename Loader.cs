@@ -187,14 +187,14 @@ namespace Assessment_1_Algo
                 }
                 if (SortChoice == 3)
                 {
-                    Sort.SortArray(IntArray, Direction,0);
+                    Sort.SortArray(IntArray, Direction);
                     Printing.print(IntArray);
                     SearchPicker(IntArray, Direction);
                     return;
                 }
                 if (SortChoice == 4)
                 {
-                    Sort.QuickSort(IntArray, Direction,0);
+                    Sort.QuickSort(IntArray, Direction);
                     Printing.print(IntArray);
                     SearchPicker(IntArray, Direction);
                     return;
