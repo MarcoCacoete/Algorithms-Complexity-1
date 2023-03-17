@@ -1,102 +1,78 @@
 ﻿using Assessment_1_Algo;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Algorithms_assessment_1
+namespace Assessment_1_Algo
 {
     class Sort
     {                   //sorting methods
-        public static (int[], int) backSorter(int[] road, int direction, int searchType)
+        public static (int[], int) BackSorter(int[] IntArray, int Direction)
         {
-            int count = road.Count();
-            int counter = 0;
-            int temp;
-            if (direction == 1)                                            //direction 1 sorts in ascending mode
+            int Count = IntArray.Count();
+            int Counter = 0;
+            int Temporary;
+            if (Direction == 1)                                            //Direction 1 sorts in ascending mode
             {
                 try
                 {
-                    while (counter != road.Count() - 1)                    //counter to prevent out of index
+                    while (Counter != IntArray.Count() - 1)                    //Counter to prevent out of index
                     {
-                        if (road[counter] > road[counter + 1])             //checks number 1 index in front of index 0 and if larger, shifts positions
+                        if (IntArray[Counter] > IntArray[Counter + 1])         //Checks number 1 index in front of index 0 and if larger, shifts positions
                         {
-                            temp = road[counter];
-
-                            road[counter] = road[counter + 1];
-
-                            road[counter + 1] = temp;
-
-                            counter++;             
-                                                                                    //whenever a shift happens it is registered in this counter, this advances the operation
-                            count--;
+                            Temporary = IntArray[Counter];
+                            IntArray[Counter] = IntArray[Counter + 1];
+                            IntArray[Counter + 1] = Temporary;
+                            Counter++;                                      //Whenever a shift happens it is registered in this Counter, this advances the operation
+                            Count--;
                         }
-                        if (counter >= 2 && road[counter - 1] < road[counter - 2])  //second if to check if previous numbers are also higher than new number
+                        if (Counter >= 2 && IntArray[Counter - 1] < IntArray[Counter - 2])  //Second if to check if previous numbers are also higher than new number
                         {
-                            temp = road[counter - 1];
-
-                            road[counter - 1] = road[counter - 2];          //same algorithm repeats 
-
-                            road[counter - 2] = temp;
-
-                            counter -= 2;                                   //resets counter everytime to retroactively go back to check all previous values
-
-                            count--;
+                            Temporary = IntArray[Counter - 1];
+                            IntArray[Counter - 1] = IntArray[Counter - 2];          //same algorithm repeats 
+                            IntArray[Counter - 2] = Temporary;
+                            Counter -= 2;                                   //resets Counter everytime to retroactively go back to check all previous values
+                            Count--;
                         }
-                        if (road[counter] <= road[counter + 1])             //this prevents an infinite loop by advancing count
-                            counter++;
+                        if (IntArray[Counter] <= IntArray[Counter + 1])             //this prevents an infinite loop by advancing Count
+                            Counter++;
                     }
                 }
                 catch
                 {
                     Console.WriteLine("Fail");
                     Console.ReadLine();
-                }
-                foreach (int i in road)
-                {
-                    Console.WriteLine(i);
-                }
+                }                
                 Console.WriteLine("Successfully completed.");
-
-                Printing.print(road);
-
-                Search.search(road, direction, searchType);
-
-                return (road, direction);
+                return (IntArray, Direction);
             }
-            else                                                                        //same algorithm as above but for descending sort, small changs made to operators
-            {                                                                           //to make it work
+            else                                                                    //same algorithm as above but for descending sort, small changs made to operators
+            {                                                                       //to make it work
             try
             {
-                while (counter != road.Count() - 1)
+                while (Counter != IntArray.Count() - 1)
                 {
-                    if (road[counter] < road[counter + 1])
+                    if (IntArray[Counter] < IntArray[Counter + 1])
                     {
-                        temp = road[counter];
-
-                        road[counter] = road[counter + 1];
-
-                        road[counter + 1] = temp;
-
-                        counter++;
-
-                        count--;
+                        Temporary = IntArray[Counter];
+                        IntArray[Counter] = IntArray[Counter + 1];
+                        IntArray[Counter + 1] = Temporary;
+                        Counter++;
+                        Count--;
                     }
-                    if (counter >= 2 && road[counter - 1] > road[counter - 2])
+                    if (Counter >= 2 && IntArray[Counter - 1] > IntArray[Counter - 2])
                     {
-                        temp = road[counter - 1];
-
-                        road[counter - 1] = road[counter - 2];
-
-                        road[counter - 2] = temp;
-
-                        counter -= 2;
-
-                        count--;
+                        Temporary = IntArray[Counter - 1];
+                        IntArray[Counter - 1] = IntArray[Counter - 2];
+                        IntArray[Counter - 2] = Temporary;
+                        Counter -= 2;
+                        Count--;
                     }
-                    if (road[counter] >= road[counter + 1])
-                        counter++;
+                    if (IntArray[Counter] >= IntArray[Counter + 1])
+                        Counter++;
                 }
             }
             catch
@@ -104,268 +80,232 @@ namespace Algorithms_assessment_1
                 Console.WriteLine("Fail");
                 Console.ReadLine();
             }
-            foreach (int i in road)
-            {
-                Console.WriteLine(i);
-            }
             Console.WriteLine("Successfully completed.");
-
-            Printing.print(road);
-
-            Search.search(road, direction, searchType);
-
-            return (road, direction);
+            return (IntArray, Direction);
             }
         }
-        public static (int[], int) pushSorter(int[] road, int direction, int searchType)
+        public static (int[], int) PushSorter(int[] IntArray, int Direction)
         {
-            if (direction == 1)
+            if (Direction == 1)
             {
-                PusherA(road);
+                PusherA(IntArray);
             }
-            if (direction == 2)
+            if (Direction == 2)
             {
-                PusherD(road);  
+                PusherD(IntArray);  
             }
 
-            (int[], int) PusherA(int[] road)
+            (int[], int) PusherA(int[] IntArray)
             {
-                int count = road.Count();
-                int counter = 0;
-                int operations = 0;
-                while (counter != road.Count() - 1)
+                int Count = IntArray.Count();
+                int Counter = 0;
+                int Operations = 0;
+                while (Counter < IntArray.Count() - 1)
                 {
-                    if (road[counter + 1] < road.Count() && road[counter] > road[counter + 1])
+                    if (IntArray[Counter] > IntArray[Counter + 1])
                     {
-                        int temp = road[counter];
-                        road[counter] = road[counter + 1];
-                        road[counter + 1] = temp;
-                        operations = 1;
+                        int Temporary = IntArray[Counter];
+                        IntArray[Counter] = IntArray[Counter + 1];
+                        IntArray[Counter + 1] = Temporary;
+                        Operations = 1;
                     }
-                    counter++;
+                    Counter++;
                 }                
-                if (operations == 1)
+                if (Operations == 1)
                 {
-                    PusherA(road);
-                }
-                else
-                {
-                    foreach (int i in road)
-                    {
-                        Console.WriteLine(i);
-                    }
-                    Console.WriteLine("end");
-                }
-                return (road, direction);
+                    PusherA(IntArray);
+                }                
+                return (IntArray, Direction);
             }     
         
-            (int[], int) PusherD(int[] road)
+            (int[], int) PusherD(int[] IntArray)
             {
-                int count = road.Count();
-                int counter = 0;
-                int operations = 0;
-                while (counter != road.Count() - 1)
+                int Count = IntArray.Count();
+                int Counter = 0;
+                int Operations = 0;
+                while (Counter != IntArray.Count() - 1)
                 {
-                    if (road[counter + 1] < road.Count() && road[counter] < road[counter + 1])
+                    if (IntArray[Counter] < IntArray[Counter + 1])
                     {
-                        int temp = road[counter];
-                        road[counter] = road[counter + 1];
-                        road[counter + 1] = temp;
-                        operations = 1;
+                        int Temporary = IntArray[Counter];
+                        IntArray[Counter] = IntArray[Counter + 1];
+                        IntArray[Counter + 1] = Temporary;
+                        Operations = 1;
                     }
-
-                    counter++;
+                    Counter++;
                 }               
-                if (operations == 1)
+                if (Operations == 1)
                 {
-                    PusherD(road);
+                    PusherD(IntArray);
+                }               
+                return (IntArray, Direction);
+            }
+            return (IntArray, Direction);
+        }
+        public static void MergeArray(int[] IntArray, int Left, int Middle, int Right)
+        {
+            var LeftArrayLength = Middle - Left + 1;
+            var RightArrayLength = Right - Middle;
+            var LeftTemporaryArray = new int[LeftArrayLength];
+            var RightTemporaryArray = new int[RightArrayLength];
+            int i, j;
+            for (i = 0; i < LeftArrayLength; ++i)
+                LeftTemporaryArray[i] = IntArray[Left + i];
+            for (j = 0; j < RightArrayLength; ++j)
+                RightTemporaryArray[j] = IntArray[Middle + 1 + j];
+            i = 0;
+            j = 0;
+            int k = Left;
+            while (i < LeftArrayLength && j < RightArrayLength)
+            {
+                if (LeftTemporaryArray[i] <= RightTemporaryArray[j])
+                {
+                    IntArray[k++] = LeftTemporaryArray[i++];
                 }
                 else
                 {
-                    foreach (int i in road)
+                    IntArray[k++] = RightTemporaryArray[j++];
+                }
+            }
+            while (i < LeftArrayLength)
+            {
+                IntArray[k++] = LeftTemporaryArray[i++];
+            }
+            while (j < RightArrayLength)
+            {
+                IntArray[k++] = RightTemporaryArray[j++];
+            }
+        }
+        public static void SortArray(int[] IntArray,int Direction)
+        {
+            if (Direction == 1)
+                SortArrayAscending(IntArray, 0, IntArray.Length - 1);
+            else
+                SortArrayDescending(IntArray, 0, IntArray.Length - 1);
+        }
+        public static int[] SortArrayAscending(int[] IntArray, int Left, int Right)
+        {
+            if (Left < Right)
+            {
+                int Middle = Left + (Right - Left) / 2;
+                SortArrayAscending(IntArray, Left, Middle);
+                SortArrayAscending(IntArray, Middle + 1, Right);
+                MergeArray(IntArray, Left, Middle, Right);
+            }
+            return IntArray;
+        }
+        public static int[] SortArrayDescending(int[] IntArray, int Left, int Right)
+        {
+            if (Left < Right)
+            {
+                int Middle = Left + (Right - Left) / 2;
+                SortArrayDescending(IntArray, Left, Middle);
+                SortArrayDescending(IntArray, Middle + 1, Right);
+                MergeArrayR(IntArray, Left, Middle, Right);
+            }
+            return IntArray;
+        }
+        public static void MergeArrayR(int[] IntArray, int Left, int Middle, int Right)
+        {
+            var LeftArrayLength = Middle - Left + 1;
+            var RightArrayLength = Right - Middle;
+            var LeftTemporaryArray = new int[LeftArrayLength];
+            var RightTemporaryArray = new int[RightArrayLength];
+            int i, j;
+            for (i = 0; i < LeftArrayLength; ++i)
+                LeftTemporaryArray[i] = IntArray[Left + i];
+            for (j = 0; j < RightArrayLength; ++j)
+                RightTemporaryArray[j] = IntArray[Middle + 1 + j];
+            i = 0;
+            j = 0;
+            int k = Left;
+            while (i < LeftArrayLength && j < RightArrayLength)
+            {
+                if (LeftTemporaryArray[i] >= RightTemporaryArray[j])
+                {
+                    IntArray[k++] = LeftTemporaryArray[i++];
+                }
+                else
+                {
+                    IntArray[k++] = RightTemporaryArray[j++];
+                }
+            }
+            while (i < LeftArrayLength)
+            {
+                IntArray[k++] = LeftTemporaryArray[i++];
+            }
+            while (j < RightArrayLength)
+            {
+                IntArray[k++] = RightTemporaryArray[j++];
+            }
+        }
+        public static void QuickSort(int[] IntArray,int Direction)
+        {
+            if (Direction == 1)
+                QuickSortAscending(IntArray, 0, IntArray.Length - 1);
+            else
+                QuickSortDescending(IntArray, 0, IntArray.Length - 1);
+
+            static int[] QuickSortAscending(int[] IntArray, int LeftIndex, int RightIndex)
+            {
+                var i = LeftIndex;
+                var j = RightIndex;
+                var Pivot = IntArray[LeftIndex];
+                while (i <= j)
+                {
+                    while (IntArray[i] < Pivot)
                     {
-                        Console.WriteLine(i);
+                        i++;
                     }
-                    Console.WriteLine("end");
+                    while (IntArray[j] > Pivot)
+                    {
+                        j--;
+                    }
+                    if (i <= j)
+                    {
+                        int Temporary = IntArray[i];
+                        IntArray[i] = IntArray[j];
+                        IntArray[j] = Temporary;
+                        i++;
+                        j--;
+                    }
                 }
-                return (road, direction);
+                if (LeftIndex < j)
+                    QuickSortAscending(IntArray, LeftIndex, j);
+                if (i < RightIndex)
+                    QuickSortAscending(IntArray, i, RightIndex);
+                return IntArray;
             }
-            Printing.print(road);
-            Search.search(road, direction, searchType);
-            return (road, direction);
-        }
-        public static void MergeArray(int[] array, int left, int middle, int right)
-        {
-            var leftArrayLength = middle - left + 1;
-            var rightArrayLength = right - middle;
-            var leftTempArray = new int[leftArrayLength];
-            var rightTempArray = new int[rightArrayLength];
-            int i, j;
-
-            for (i = 0; i < leftArrayLength; ++i)
-                leftTempArray[i] = array[left + i];
-            for (j = 0; j < rightArrayLength; ++j)
-                rightTempArray[j] = array[middle + 1 + j];
-
-            i = 0;
-            j = 0;
-            int k = left;
-
-            while (i < leftArrayLength && j < rightArrayLength)
+            static int[] QuickSortDescending(int[] IntArray, int LeftIndex, int RightIndex)
             {
-                if (leftTempArray[i] <= rightTempArray[j])
+                var i = LeftIndex;
+                var j = RightIndex;
+                var Pivot = IntArray[LeftIndex];
+                while (i <= j)
                 {
-                    array[k++] = leftTempArray[i++];
+                    while (IntArray[i] > Pivot)
+                    {
+                        i++;
+                    }
+                    while (IntArray[j] < Pivot)
+                    {
+                        j--;
+                    }
+                    if (i <= j)
+                    {
+                        int Temporary = IntArray[i];
+                        IntArray[i] = IntArray[j];
+                        IntArray[j] = Temporary;
+                        i++;
+                        j--;
+                    }
                 }
-                else
-                {
-                    array[k++] = rightTempArray[j++];
-                }
+                if (LeftIndex < j)
+                    QuickSortDescending(IntArray, LeftIndex, j);
+                if (i < RightIndex)
+                    QuickSortDescending(IntArray, i, RightIndex);
+                return IntArray;
             }
-
-            while (i < leftArrayLength)
-            {
-                array[k++] = leftTempArray[i++];
-            }
-
-            while (j < rightArrayLength)
-            {
-                array[k++] = rightTempArray[j++];
-            }
-        }
-        public static int[] SortArray(int[] array, int left, int right)
-        {
-            if (left < right)
-            {
-                int middle = left + (right - left) / 2;
-                SortArray(array, left, middle);
-                SortArray(array, middle + 1, right);
-                MergeArray(array, left, middle, right);
-            }
-            return array;
-        }
-        public static void MergeArrayR(int[] array, int left, int middle, int right)
-        {
-            var leftArrayLength = middle - left + 1;
-            var rightArrayLength = right - middle;
-            var leftTempArray = new int[leftArrayLength];
-            var rightTempArray = new int[rightArrayLength];
-            int i, j;
-
-            for (i = 0; i < leftArrayLength; ++i)
-                leftTempArray[i] = array[left + i];
-            for (j = 0; j < rightArrayLength; ++j)
-                rightTempArray[j] = array[middle + 1 + j];
-
-            i = 0;
-            j = 0;
-            int k = left;
-
-            while (i < leftArrayLength && j < rightArrayLength)
-            {
-                if (leftTempArray[i] >= rightTempArray[j])
-                {
-                    array[k++] = leftTempArray[i++];
-                }
-                else
-                {
-                    array[k++] = rightTempArray[j++];
-                }
-            }
-
-            while (i < leftArrayLength)
-            {
-                array[k++] = leftTempArray[i++];
-            }
-
-            while (j < rightArrayLength)
-            {
-                array[k++] = rightTempArray[j++];
-            }
-        }
-        public static int[] SortArrayR(int[] array, int left, int right)
-        {
-            if (left < right)
-            {
-                int middle = left + (right - left) / 2;
-                SortArrayR(array, left, middle);
-                SortArrayR(array, middle + 1, right);
-                MergeArrayR(array, left, middle, right);
-            }
-            return array;
-        }
-
-        public static int[] QuickSort(int[] array, int leftIndex, int rightIndex)
-        {
-            var i = leftIndex;
-            var j = rightIndex;
-            var pivot = array[leftIndex];
-
-            while (i <= j)
-            {
-                while (array[i] < pivot)
-                {
-                    i++;
-                }
-
-                while (array[j] > pivot)
-                {
-                    j--;
-                }
-
-                if (i <= j)
-                {
-                    int temp = array[i];
-                    array[i] = array[j];
-                    array[j] = temp;
-                    i++;
-                    j--;
-                }
-            }
-
-            if (leftIndex < j)
-                QuickSort(array, leftIndex, j);
-
-            if (i < rightIndex)
-                QuickSort(array, i, rightIndex);
-
-            return array;
-        }
-        public static int[] QuickSortR(int[] array, int leftIndex, int rightIndex)
-        {
-            var i = leftIndex;
-            var j = rightIndex;
-            var pivot = array[leftIndex];
-
-            while (i <= j)
-            {
-                while (array[i] > pivot)
-                {
-                    i++;
-                }
-
-                while (array[j] < pivot)
-                {
-                    j--;
-                }
-
-                if (i <= j)
-                {
-                    int temp = array[i];
-                    array[i] = array[j];
-                    array[j] = temp;
-                    i++;
-                    j--;
-                }
-            }
-
-            if (leftIndex < j)
-                QuickSortR(array, leftIndex, j);
-            
-            if (i < rightIndex)
-                QuickSortR(array, i, rightIndex);
-
-            return array;
         }
     }
 }

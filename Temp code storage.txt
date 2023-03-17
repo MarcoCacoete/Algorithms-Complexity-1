@@ -135,3 +135,60 @@ public static int[] SortArray(int[] array, int left, int right, int DirectionCho
                 Merge(v, left, right);
             }
         }
+
+
+        static void MoreValues(int[] road, int Number, int foundNumber)
+            {
+                while (true)
+                {
+                    int up = 0;
+                    int down = 0;
+                    int reset = 0;
+                    try                                                                              //next few blocks of code are for finding all occurences of a value in array
+                    {
+                        if (road[foundNumber - 1] == Number && up == 0)
+                        {
+                            while (road[foundNumber - 1] == Number)                         //first it checks up the array for more of the same value
+                            {
+                                foundNumber = foundNumber - 1;
+                                Console.WriteLine("The Number " + Number + " was also found at index " + foundNumber);
+                                reset++;
+                            }
+                            up = 1;
+                        }
+                    }
+                    catch
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("No more occurences found in this direction.");
+                        Console.WriteLine();
+                    }
+                    foundNumber = foundNumber + reset;
+                    int totalFound = reset + 1;
+                    try
+                    {
+                        if (road[foundNumber + 1] == Number && down == 0)
+                        {
+                            while (road[foundNumber + 1] == Number)                             //then it starts going down to check for same
+                            {
+                                totalFound++;
+                                foundNumber = foundNumber + 1;
+                                Console.WriteLine("The Number " + Number + " was also found at index " + foundNumber);
+                            }
+                            down = 1;
+                        }
+                    }
+                    catch
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("No more occurences found in this direction.");
+                        Console.WriteLine();
+                    }
+                    Console.WriteLine();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Total occurrences of Number found: " + totalFound);  //prints count for total values found
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine();
+                    break;
+                }
+            }

@@ -31,3 +31,9 @@ TODO
 Implement error handling for every input.
 
                 }
+
+Stupid idea for search method.
+
+While sorting if number is found register number index.
+
+register number index the last time it was sorted.
