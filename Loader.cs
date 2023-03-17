@@ -188,6 +188,12 @@ namespace Assessment_1_Algo
                 if (SortChoice == 3)
                 {
                     Sort.SortArray(IntArray, Direction);
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Total amount of steps: "+Sort.Efficiency);
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("Press any key to continue.");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ReadLine();  
                     Printing.print(IntArray);
                     SearchPicker(IntArray, Direction);
                     return;
@@ -195,6 +201,12 @@ namespace Assessment_1_Algo
                 if (SortChoice == 4)
                 {
                     Sort.QuickSort(IntArray, Direction);
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Total amount of steps: "+Sort.Efficiency);
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("Press any key to continue.");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ReadLine();  
                     Printing.print(IntArray);
                     SearchPicker(IntArray, Direction);
                     return;
@@ -238,6 +250,14 @@ namespace Assessment_1_Algo
                     int Number = Convert.ToInt32(Console.ReadLine());
                     Console.WriteLine();
                     Search.search(IntArray, Direction,SearchType, Number);
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    int TotalSteps = Search.EfficiencySearch + Search.HelperSteps;
+                    Console.WriteLine("Total amount of search algorithm steps: " + Search.EfficiencySearch +
+                                      " Total amount of search helper method steps: " + Search.HelperSteps+ " Total Steps combined: "+TotalSteps);
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("Press any key to continue.");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ReadLine(); 
                     return;
                 }
                 if (SearchType == 2)
@@ -249,6 +269,14 @@ namespace Assessment_1_Algo
                     int Number = Convert.ToInt32(Console.ReadLine());
                     Console.WriteLine();
                     Search.search(IntArray, Direction, SearchType,Number);
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    int TotalSteps = Search.EfficiencySearch + Search.HelperSteps;
+                    Console.WriteLine("Total amount of search algorithm steps: " + Search.EfficiencySearch +
+                                      " Total amount of search helper method steps: " + Search.HelperSteps+ " Total Steps combined: "+TotalSteps);
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("Press any key to continue.");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ReadLine();  
                     return;
                 }
                 else
