@@ -188,8 +188,11 @@ namespace Assessment_1_Algo
                 {
                     Sort.SortArray(IntArray, Direction);
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Total amount of steps: "+Sort.Efficiency);
+                    Console.Write("Total amount of steps: ");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine(Sort.Efficiency);
                     Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine(); 
                     Console.WriteLine("Press any key to continue.");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.ReadLine();  
@@ -201,8 +204,11 @@ namespace Assessment_1_Algo
                 {
                     Sort.QuickSort(IntArray, Direction);
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Total amount of steps: "+Sort.Efficiency);
+                    Console.Write("Total amount of steps: ");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine(Sort.Efficiency);
                     Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine(); 
                     Console.WriteLine("Press any key to continue.");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.ReadLine();  
@@ -262,6 +268,7 @@ namespace Assessment_1_Algo
                     Console.Write("Total Steps combined: ");
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine(+ TotalSteps);
+                    Console.WriteLine();
                     Console.ForegroundColor = ConsoleColor.Blue;
                     Console.WriteLine("Press any key to continue.");
                     Console.ForegroundColor = ConsoleColor.White;
@@ -290,6 +297,7 @@ namespace Assessment_1_Algo
                     Console.Write("Total Steps combined: ");
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine(+ TotalSteps);
+                    Console.WriteLine();
                     Console.ForegroundColor = ConsoleColor.Blue;
                     Console.WriteLine("Press any key to continue.");
                     Console.ForegroundColor = ConsoleColor.White;

@@ -54,8 +54,11 @@ namespace Assessment_1_Algo
                     Console.ReadLine();
                 }                
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Total amount of steps: "+Efficiency);
+                Console.Write("Total amount of steps: ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine(Sort.Efficiency);
                 Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine(); 
                 Console.WriteLine("Press any key to continue.");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.ReadLine();
@@ -98,8 +101,11 @@ namespace Assessment_1_Algo
                     Console.ReadLine();
                 }
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Total amount of steps: "+Efficiency);
+                Console.Write("Total amount of steps: ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine(Sort.Efficiency);
                 Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine(); 
                 Console.WriteLine("Press any key to continue.");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.ReadLine();          
@@ -168,11 +174,14 @@ namespace Assessment_1_Algo
                 }               
             }
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Total amount of steps: "+Efficiency);
+            Console.Write("Total amount of steps: ");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(Sort.Efficiency);
             Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(); 
             Console.WriteLine("Press any key to continue.");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.ReadLine();  
+            Console.ReadLine();
             return (IntArray, Direction);
         }
         public static void MergeArray(int[] IntArray, int Left, int Middle, int Right)

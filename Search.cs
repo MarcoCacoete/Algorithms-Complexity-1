@@ -369,8 +369,8 @@ namespace Assessment_1_Algo
                     if (foundNumber == -1)
                     {
                         HelperSteps++;
-                        ClosestNumberUpReverse(road, Number, foundNumber, SearchAlgo);
-                        ClosestNumberDownReverse(road, Number, foundNumber, SearchAlgo);
+                        ClosestNumberUp(road, Number, foundNumber, SearchAlgo);
+                        ClosestNumberDown(road, Number, foundNumber, SearchAlgo);
                         return;
                     }
                     else
@@ -443,8 +443,8 @@ namespace Assessment_1_Algo
                     if (foundNumber == -1)
                     {
                         HelperSteps++;
-                        ClosestNumberUp(road, Number, foundNumber, SearchAlgo);
-                        ClosestNumberDown(road, Number, foundNumber, SearchAlgo);
+                        ClosestNumberUpReverse(road, Number, foundNumber, SearchAlgo);
+                        ClosestNumberDownReverse(road, Number, foundNumber, SearchAlgo);
                         return;
                     }
                     else
