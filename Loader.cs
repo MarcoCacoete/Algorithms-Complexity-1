@@ -11,7 +11,6 @@ namespace Assessment_1_Algo
     {
         public static void loader()
         {
-
             string[] RoadsArray1256;
             string[] RoadsArray2256;
             string[] RoadsArray3256;
@@ -252,8 +251,17 @@ namespace Assessment_1_Algo
                     Search.search(IntArray, Direction,SearchType, Number);
                     Console.ForegroundColor = ConsoleColor.Red;
                     int TotalSteps = Search.EfficiencySearch + Search.HelperSteps;
-                    Console.WriteLine("Total amount of search algorithm steps: " + Search.EfficiencySearch +
-                                      " Total amount of search helper method steps: " + Search.HelperSteps+ " Total Steps combined: "+TotalSteps);
+                    Console.Write("Total amount of search algorithm steps: ");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine(Search.EfficiencySearch);
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write("Total amount of search helper method steps: ");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine(Search.HelperSteps);
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write("Total Steps combined: ");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine(+ TotalSteps);
                     Console.ForegroundColor = ConsoleColor.Blue;
                     Console.WriteLine("Press any key to continue.");
                     Console.ForegroundColor = ConsoleColor.White;
@@ -271,12 +279,21 @@ namespace Assessment_1_Algo
                     Search.search(IntArray, Direction, SearchType,Number);
                     Console.ForegroundColor = ConsoleColor.Red;
                     int TotalSteps = Search.EfficiencySearch + Search.HelperSteps;
-                    Console.WriteLine("Total amount of search algorithm steps: " + Search.EfficiencySearch +
-                                      " Total amount of search helper method steps: " + Search.HelperSteps+ " Total Steps combined: "+TotalSteps);
+                    Console.Write("Total amount of search algorithm steps: ");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine(Search.EfficiencySearch);
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write("Total amount of search helper method steps: ");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine(Search.HelperSteps);
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write("Total Steps combined: ");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine(+ TotalSteps);
                     Console.ForegroundColor = ConsoleColor.Blue;
                     Console.WriteLine("Press any key to continue.");
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.ReadLine();  
+                    Console.ReadLine(); 
                     return;
                 }
                 else

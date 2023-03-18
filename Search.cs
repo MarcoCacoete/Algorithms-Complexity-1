@@ -133,7 +133,9 @@ namespace Assessment_1_Algo
                     catch
                     {
                         Console.WriteLine();
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("No more occurrences found in this direction.");
+                        Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine();
                     }
                     foundNumber = foundNumber + reset;
@@ -156,7 +158,9 @@ namespace Assessment_1_Algo
                     catch
                     {
                         Console.WriteLine();
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("No more occurrences found in this direction.");
+                        Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine();
                     }
                     Console.WriteLine();
@@ -197,7 +201,9 @@ namespace Assessment_1_Algo
                 Console.WriteLine("The Number " + Number + " was first found at index " + foundNumber);     //value is found
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Searching for more locations for same value.");
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine();
                 MoreValues(road, Number, foundNumber);
 
@@ -233,7 +239,9 @@ namespace Assessment_1_Algo
                 Console.WriteLine("The Number " + Number + " was first found at index " + foundNumber);     //value is found
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Searching for more locations for same value.");
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine();
                 MoreValues(road, Number, foundNumber);
             }
@@ -267,7 +275,9 @@ namespace Assessment_1_Algo
                 Console.WriteLine("The Number " + Number + " was first found at index " + foundNumber);     //value is found
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Searching for more locations for same value.");
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine();
                 MoreValues(road, Number, foundNumber);
 
@@ -303,7 +313,9 @@ namespace Assessment_1_Algo
                 Console.WriteLine("The Number " + Number + " was first found at index " + foundNumber);     //value is found
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Searching for more locations for same value.");
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine();
                 MoreValues(road, Number, foundNumber);
             }
@@ -318,7 +330,9 @@ namespace Assessment_1_Algo
                     Console.WriteLine();
                     Number = road[road.Count() - 1];
                     int index = road.Count() - 1;
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("The closest Number found was " + Number + " found at index " + index);
+                    Console.ForegroundColor = ConsoleColor.White;
                     MoreValues(road, Number, index);
                     return;
                 }
@@ -330,7 +344,9 @@ namespace Assessment_1_Algo
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine();
                     Number = road[0];
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("The closest Number found was " + Number + " found at index 0.");
+                    Console.ForegroundColor = ConsoleColor.White;
                     MoreValues(road, Number, 0);
                     return;
                 }
@@ -364,7 +380,9 @@ namespace Assessment_1_Algo
                         Console.WriteLine("The Number " + Number + " was first found at index " + foundNumber);     //value is found
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine();
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Searching for more locations for same value.");
+                        Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine();
                         MoreValues(road, Number, foundNumber);
 
@@ -379,10 +397,13 @@ namespace Assessment_1_Algo
                     HelperSteps++;
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Number " + Number + " not found!");
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine();
                     Number = road[road.Count() - 1];
                     int index = road.Count() - 1;
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("The closest Number found was " + Number + " found at index " + index);
+                    Console.ForegroundColor = ConsoleColor.White;
                     MoreValues(road, Number, index);
 
                     return;
@@ -395,7 +416,9 @@ namespace Assessment_1_Algo
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine();
                     Number = road[0];
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("The closest Number found was " + Number + " found at index 0.");
+                    Console.ForegroundColor = ConsoleColor.White;
                     MoreValues(road, Number, 0);
 
                     return;
@@ -431,7 +454,9 @@ namespace Assessment_1_Algo
                         Console.WriteLine("The Number " + Number + " was first found at index " + foundNumber);     //value is found
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine();
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Searching for more locations for same value.");
+                        Console.ForegroundColor = ConsoleColor.White; 
                         Console.WriteLine();
                         MoreValues(road, Number, foundNumber);
                     }                    
