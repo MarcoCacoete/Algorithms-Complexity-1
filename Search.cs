@@ -11,9 +11,11 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace Assessment_1_Algo
 {
     public class Search
-    {
+    {       // Global variables to count number of steps to analyse efficiency.
         public static int HelperSteps = 0;
         public static int EfficiencySearch = 0;
+        
+            // Helper method to pick search type and sorting order.
         public static void search(int[] road, int rev, int SearchAlgo, int Number)
         {
             if (rev == 1)
@@ -26,13 +28,43 @@ namespace Assessment_1_Algo
                 HelperSteps++;
                 SearchDown(road, rev, SearchAlgo, Number);
             }
-
-
-            static int BinSearchR(int[] array, int num)     //same Search as above but for reverse sorting
+            
+                         // Binary Search method
+            static int BinSearch(int[] array, int num)    
             {
                 int HalfLeft = 0;
                 int HalfRight = array.Length - 1;
-                int Middle = (HalfLeft + HalfRight) / 2;
+                int Middle;                              // Declares left and right limit indexes. 
+                while (HalfLeft <= HalfRight)
+                {
+                    EfficiencySearch++;
+                    Middle = (HalfLeft + HalfRight) / 2;    // Finds Middle point of array
+                                                            // Best case result if value is Middle value of array.
+                    if (num == array[Middle])               // It eventually will match the Middle result to searched value, unless not in array.
+                    {
+                        EfficiencySearch++;
+                        return Middle;
+                    }
+                    else if (num < array[Middle])           // If value is smaller than array middle index it adjusts right index limit of search to middle index -1.
+                    {
+                        EfficiencySearch++;
+                        HalfRight = Middle - 1;
+                    }
+                    else
+                    {
+                        EfficiencySearch++;
+                        HalfLeft = Middle + 1;               // Otherwise it does the reverse.
+                    }
+                }
+                return -1;                                   // Returns -1 when it doesn't find the value.
+            }
+            
+                    // Same Search as above but for reverse sorting order.
+            static int BinSearchR(int[] array, int num)     
+            {
+                int HalfLeft = 0;
+                int HalfRight = array.Length - 1;
+                int Middle;
                 while (HalfLeft <= HalfRight)
                 {
                     EfficiencySearch++;
@@ -57,134 +89,92 @@ namespace Assessment_1_Algo
                 }
                 return -1;
             }
-            static int BinSearch(int[] array, int num)    //the only algorithm I got working so far for Searching basic binary Search
-            {
-                int HalfLeft = 0;
-                int HalfRight = array.Length - 1;
-                int Middle = (HalfLeft + HalfRight) / 2;
-                while (HalfLeft <= HalfRight)
-                {
-                    EfficiencySearch++;
-                    Middle = (HalfLeft + HalfRight) / 2;    //finds Middle point of array
-                    if (num == array[Middle])               //best case result if value is Middle of array or when it eventually is the Middle result or not
-                    {
-                        EfficiencySearch++;
-                        return Middle;
-                    }
-                    else if (num < array[Middle])           //if not it checks if it's larger or smaller than Middle, and adjusts Middle to new Middle
-                    {
-                        EfficiencySearch++;
-                        HalfRight = Middle - 1;
-                    }
-                    else
-                    {
-                        EfficiencySearch++;
-                        HalfLeft = Middle + 1;                 //same as above
-                    }
-                }
-                return -1;                                  //return for when it doesn't find the value
-            }
-
+            
+                        // Method for sequential search.
             static int SeqSearch(int[] x, int y)
             {
                 int counter = 0;
-                while (counter <= x.Count() - 1)
+                
+                foreach (int i in x)     // For each value in array x.
                 {
                     EfficiencySearch++;
-                    foreach (int i in x)
+
+                    if (i == y)          // It will compare if value is same as the one we're looking for, if it is it returns that items index.
                     {
                         EfficiencySearch++;
 
-                        if (i == y)
-                        {
-                            EfficiencySearch++;
-
-                            return counter;
-                        }
-                        counter++;
+                        return counter;
                     }
+                    counter++;
                 }
-                return -1;
+                
+                return -1;              // If value is not found, it returns -1 to be fed to helper search method that adjusts number to closest number.
             }
-
+                            // Helper method that finds all occurrences of value we are searching for
             static void MoreValues(int[] road, int Number, int foundNumber)
             {
-                while (true)
+                int reset = 0;      // Counter used to reset index so it can start searching in other direction.
+                try                                                   
                 {
-                    HelperSteps++;
-                    int up = 0;
-                    int down = 0;
-                    int reset = 0;
-                    try                                                   //next few blocks of code are for finding all occurrences of a value in array
+                    while (road[foundNumber - 1] == Number)     // First it checks up the array for more of the same value
                     {
-                        if (road[foundNumber - 1] == Number && up == 0)
-                        {
-                            HelperSteps++;
-                            while (road[foundNumber - 1] == Number)       //first it checks up the array for more of the same value
-                            {
-                                HelperSteps++;
-                                foundNumber = foundNumber - 1;
-                                Console.WriteLine("The Number " + Number + " was also found at index " + foundNumber);
-                                reset++;
-                            }
-                            up = 1;
-                        }
+                        HelperSteps++;
+                        foundNumber = foundNumber - 1;          // If it finds more of the number it will print its index.
+                        Console.WriteLine("The Number " + Number + " was also found at index " + foundNumber);
+                        reset++;
                     }
-                    catch
-                    {
-                        Console.WriteLine();
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("No more occurrences found in this direction.");
-                        Console.ForegroundColor = ConsoleColor.White;
-                        Console.WriteLine();
-                    }
-                    foundNumber = foundNumber + reset;
-                    int totalFound = reset + 1;
-                    try
-                    {
-                        if (road[foundNumber + 1] == Number && down == 0)
-                        {
-                            HelperSteps++;
-                            while (road[foundNumber + 1] == Number)                             //then it starts going down to check for same
-                            {
-                                HelperSteps++;
-                                totalFound++;
-                                foundNumber = foundNumber + 1;
-                                Console.WriteLine("The Number " + Number + " was also found at index " + foundNumber);
-                            }
-                            down = 1;
-                        }
-                    }
-                    catch
-                    {
-                        Console.WriteLine();
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("No more occurrences found in this direction.");
-                        Console.ForegroundColor = ConsoleColor.White;
-                        Console.WriteLine();
-                    }
+                }
+                catch
+                {
                     Console.WriteLine();
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Total occurrences of Number found: " + totalFound);  //prints count for total values found
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("No more occurrences found before first location.");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine();
-                    break;
                 }
+                foundNumber = foundNumber + reset;  // This resets the index of the found number.
+                int totalFound = reset + 1;         // This counter counts occurrences of value found.
+                try
+                {                   // Same method as above but now looking for locations after first location found.
+                    while (road[foundNumber + 1] == Number)                        
+                    {
+                        HelperSteps++;
+                        totalFound++;
+                        foundNumber = foundNumber + 1;
+                        Console.WriteLine("The Number " + Number + " was also found at index " + foundNumber);
+                    }
+                }
+                catch
+                {
+                    Console.WriteLine();
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("No more occurrences found after first location.");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine();
+                }
+                Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Total occurrences of Number found: " + totalFound);  // Prints count for total values found
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine();
+                
             }
+            
+                    // This method looks for the closest number found before the number we failed to find in an array.
             static void ClosestNumberUp(int[] road, int Number, int foundNumber, int SearchAlgo)
             {
                 int adjNumber = 0;
                 int originalNumber = Number;
-                while (foundNumber == -1)                                   //when Search fails to find value, value is adjusted to closest value to be found
+                while (foundNumber == -1)          // When Search fails to find value, value is adjusted to closest value to be found.
                 {
                     HelperSteps++;
                     adjNumber = Number - 1;
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("Number " + Number + " not found, attempting to find closest Number.");
-                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ForegroundColor = ConsoleColor.Green;               // Message to inform user the original number wasn't found.
+                    Console.WriteLine("Number " + Number + " not found, attempting to find closest Number."); 
+                    Console.ForegroundColor = ConsoleColor.White;   
                     Console.WriteLine();
 
-                    if (SearchAlgo == 1)
+                    if (SearchAlgo == 1)        // Honors original choice of algorithm to look for new values.
                     {
                         HelperSteps++;
                         foundNumber = BinSearch(road, adjNumber);
@@ -198,22 +188,23 @@ namespace Assessment_1_Algo
                     }
                 }
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("The Number " + Number + " was first found at index " + foundNumber);     //value is found
+                Console.WriteLine("The Number " + Number + " was first found at index " + foundNumber);   // New value is found and it's location revealed.
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine();
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Searching for more locations for same value.");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine();
-                MoreValues(road, Number, foundNumber);
+                MoreValues(road, Number, foundNumber);              // Calls method that finds more of the same value.
 
                 Number = originalNumber;
                 foundNumber = -1;
             }
+                        // Once again this method is same as above in every way, except it looks for closest number after value not found.
             static void ClosestNumberDown(int[] road, int Number, int foundNumber, int SearchAlgo)
             {
                 int adjNumber = 0;
-                while (foundNumber == -1)                                   //when Search fails to find value, value is adjusted to closest value to be found
+                while (foundNumber == -1)                                
                 {
                     HelperSteps++;
                     adjNumber = Number + 1;
@@ -236,7 +227,7 @@ namespace Assessment_1_Algo
                     }
                 }
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("The Number " + Number + " was first found at index " + foundNumber);     //value is found
+                Console.WriteLine("The Number " + Number + " was first found at index " + foundNumber);     
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine();
                 Console.ForegroundColor = ConsoleColor.Green;
@@ -245,11 +236,13 @@ namespace Assessment_1_Algo
                 Console.WriteLine();
                 MoreValues(road, Number, foundNumber);
             }
+                
+            // Once again this method is same as above in every way, except it looks for closest number before value not found in reverse sorted array.
             static void ClosestNumberUpReverse(int[] road, int Number, int foundNumber, int SearchAlgo)
             {
                 int adjNumber = 0;
                 int originalNumber = Number;
-                while (foundNumber == -1)                                   //when Search fails to find value, value is adjusted to closest value to be found
+                while (foundNumber == -1)                                 
                 {
                     HelperSteps++;
                     adjNumber = Number - 1;
@@ -272,7 +265,7 @@ namespace Assessment_1_Algo
                     }
                 }
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("The Number " + Number + " was first found at index " + foundNumber);     //value is found
+                Console.WriteLine("The Number " + Number + " was first found at index " + foundNumber);     
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine();
                 Console.ForegroundColor = ConsoleColor.Green;
@@ -284,10 +277,12 @@ namespace Assessment_1_Algo
                 Number = originalNumber;
                 foundNumber = -1;
             }
+            
+            // Once again this method is same as above in every way, except it looks for closest number after value not found in reverse sorted array.
             static  void ClosestNumberDownReverse(int[] road, int Number, int foundNumber,int SearchAlgo)
             {
                 int adjNumber = 0;
-                while (foundNumber == -1)                                   //when Search fails to find value, value is adjusted to closest value to be found
+                while (foundNumber == -1)                                   
                 {
                     HelperSteps++;
                     adjNumber = Number + 1;
@@ -310,7 +305,7 @@ namespace Assessment_1_Algo
                     }
                 }
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("The Number " + Number + " was first found at index " + foundNumber);     //value is found
+                Console.WriteLine("The Number " + Number + " was first found at index " + foundNumber);     
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine();
                 Console.ForegroundColor = ConsoleColor.Green;
@@ -319,10 +314,13 @@ namespace Assessment_1_Algo
                 Console.WriteLine();
                 MoreValues(road, Number, foundNumber);
             }
+            
+            // Helper method to search algorithm it gives best case results in case number searched is lower or higher than firs and last index.
+            // It also is responsible for calling more values method and closest number methods passing correct sort order and search type picked.
             static void SearchUp(int[] road, int rev, int SearchAlgo,int Number)
             {
-                if (Number > road[road.Count() - 1])                                    //if statements prevent Search of out of index values
-                {
+                if (Number > road[road.Count() - 1])        // If statements prevent Search of out of index values, return best case result instead.
+                {                                           // and all its occurrences.
                     HelperSteps++;
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Number " + Number + " not found!");
@@ -350,8 +348,8 @@ namespace Assessment_1_Algo
                     MoreValues(road, Number, 0);
                     return;
                 }
-                else
-                {
+                else                         // If above is not the case, it starts calling search methods.
+                {                   
                     HelperSteps++;
                     int foundNumber = 0;
 
@@ -365,7 +363,6 @@ namespace Assessment_1_Algo
                         HelperSteps++;
                         foundNumber = SeqSearch(road, Number);  // calls sequential Search for value selected on corresponding array
                     }
-
                     if (foundNumber == -1)
                     {
                         HelperSteps++;
@@ -373,11 +370,11 @@ namespace Assessment_1_Algo
                         ClosestNumberDown(road, Number, foundNumber, SearchAlgo);
                         return;
                     }
-                    else
+                    else                      // I value is found it tries to find more occurrences of same value.
                     {
                         HelperSteps++;
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("The Number " + Number + " was first found at index " + foundNumber);     //value is found
+                        Console.WriteLine("The Number " + Number + " was first found at index " + foundNumber);     
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine();
                         Console.ForegroundColor = ConsoleColor.Green;
@@ -385,11 +382,11 @@ namespace Assessment_1_Algo
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine();
                         MoreValues(road, Number, foundNumber);
-
                     }
-
                 }
             }
+            
+            // Again same method as above but for reverse sort order.
             static void SearchDown(int[] road, int rev, int SearchAlgo,int Number)                                                                      // same exact methods only for descending sort
             {
                 if (Number < road[road.Count() - 1])
@@ -431,7 +428,7 @@ namespace Assessment_1_Algo
                     if (SearchAlgo == 1)
                     {
                         HelperSteps++;
-                        foundNumber = BinSearchR(road, Number);   //calls up binary Search for value selected on array selected
+                        foundNumber = BinSearchR(road, Number);   
                     }
                     if (SearchAlgo == 2)
                     {
@@ -451,7 +448,7 @@ namespace Assessment_1_Algo
                     {
                         HelperSteps++;
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("The Number " + Number + " was first found at index " + foundNumber);     //value is found
+                        Console.WriteLine("The Number " + Number + " was first found at index " + foundNumber);     
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine();
                         Console.ForegroundColor = ConsoleColor.Green;

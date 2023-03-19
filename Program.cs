@@ -3,8 +3,8 @@
     class Program
     {
         static void Main(string[] args)
-        {
-            Loader.loader();
+        {// Starts the loader method in loader class.
+            Loader.loader(); 
         }
     }
 }

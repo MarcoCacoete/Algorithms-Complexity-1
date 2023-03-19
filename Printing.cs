@@ -8,18 +8,18 @@ using System.Threading.Tasks;
 namespace Assessment_1_Algo
 {
     class Printing
-    {
+    {           // Method responsible for printing every 10th and 50th value of a sorted array.
         public static void print(int[] SortedArray)
         {
             int Number = 10;
             int Increment = 10;
-            if (SortedArray.Length > 512)
+            if (SortedArray.Length > 512)       // Depending on the array size, the appropriate variable will be selected.
             {
                 Number = 50;
                 Increment = 50;
             }
-            try                                                                             //method for printing every nth value (10th or 50th)
-            {                
+            try                                                                             
+            {                // A for loop iterates through each value of sorted array and prints it to console.
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Printing sorted array.");
                 Console.ForegroundColor = ConsoleColor.White;
@@ -34,7 +34,7 @@ namespace Assessment_1_Algo
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine();
                 while (true)
-                {
+                {           // Following the above task, every 'th value is printed below.
                     Console.WriteLine("Value " + SortedArray[0 + Number] + " found at index " + Number);
                     Number += Increment;
                 }               

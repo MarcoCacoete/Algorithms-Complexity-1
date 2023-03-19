@@ -10,22 +10,22 @@ namespace Assessment_1_Algo
     class Loader
     {
         public static void loader()
-        {
+        {   // Declares string arrays with names matching .txt files.
             string[] RoadsArray1256;
             string[] RoadsArray2256;
             string[] RoadsArray3256;
             string[] RoadsArray12048;
             string[] RoadsArray22048;
             string[] RoadsArray32048;
-
-            RoadsArray1256 = File.ReadAllLines("Road_1_256.txt");               //loads all txt files into arrays
+            // Reads all txt files and adds strings into arrays.
+            RoadsArray1256 = File.ReadAllLines("Road_1_256.txt");               
             RoadsArray2256 = File.ReadAllLines("Road_2_256.txt");
             RoadsArray3256 = File.ReadAllLines("Road_3_256.txt");
             RoadsArray12048 = File.ReadAllLines("Road_1_2048.txt");
             RoadsArray22048 = File.ReadAllLines("Road_2_2048.txt");
             RoadsArray32048 = File.ReadAllLines("Road_3_2048.txt");
             try
-            {
+            {   // Prompts for user to pick which array to use wrapped in try catch method for error handling.
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("Which array would you like to load? ");
                 Console.ForegroundColor = ConsoleColor.White;
@@ -38,7 +38,7 @@ namespace Assessment_1_Algo
                 Console.WriteLine("7: Merged 1 and 3");
                 Console.WriteLine("8: Merged 4 and 6");
                 int RoadChoice = Convert.ToInt32(Console.ReadLine());
-            
+                // Conditions to execute correct Converter method for respective array, and convert that array to int array.
                 if (RoadChoice == 1)
                 {
                     Converter(RoadsArray1256, 256);
@@ -69,12 +69,12 @@ namespace Assessment_1_Algo
                     Converter(RoadsArray32048, 2048);
                     return;
                 }
-                if (RoadChoice == 7)                                 //merges and concatenates arrays if options 7 or 8, then converts type of array
+                if (RoadChoice == 7)                                 
                 {
                     string[] merged = RoadsArray1256.Concat(RoadsArray3256).ToArray();
                     Converter(merged, merged.Length);
                     return;
-                }
+                }                                           // Merges and concatenates arrays if options 7 or 8 are selected, then converts type of array to int array.
                 if (RoadChoice == 8)
                 {
                     string[] merged = RoadsArray12048.Concat(RoadsArray32048).ToArray();
@@ -91,7 +91,7 @@ namespace Assessment_1_Algo
                     loader();
                 }
             }
-            catch
+            catch       // Two ways of handling user input errors, same methods used for rest of prompts.
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Please enter valid option.");
@@ -100,7 +100,8 @@ namespace Assessment_1_Algo
                 loader();
             }
         }
-        static int[] Converter(string[] StringArray, int Size)                                     //method for converting string array to int array
+                        // Method for converting string arrays to int arrays.
+        static int[] Converter(string[] StringArray, int Size)                                     
         {
             int[] IntArray = new int[Size];
             int Iterator = 0;
@@ -116,6 +117,8 @@ namespace Assessment_1_Algo
             Direction(IntArray);
             return IntArray;
         }
+        
+                        // Method used to give the user a choice of sorting direction.
         static void Direction(int[] IntArray)
         {
             try
@@ -132,7 +135,7 @@ namespace Assessment_1_Algo
                 {
                     SorterPicker(IntArray, 1);
                     return;
-                }
+                }                               // Depending on choice, the respective arguments are used for execution of sorter picker method below.
                 if (DirectionChoice == 2)
                 {
                     SorterPicker(IntArray, 2);
@@ -156,6 +159,7 @@ namespace Assessment_1_Algo
                 Direction(IntArray);
             }
         }
+                        // Method responsible for giving the user a choice of sorting method to be used.
         static void SorterPicker(int[] IntArray, int Direction)
         {
             try
@@ -169,17 +173,35 @@ namespace Assessment_1_Algo
                 Console.WriteLine("4: Quicksort.");
                 int SortChoice = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine();
-            
+                        // Depending on choice, a method will be executed, then followed by call to the search method. message is displayed with some information for user in a different color.
                 if (SortChoice == 1)
                 {
-                    Sort.BackSorter(IntArray, Direction);
-                    Printing.print(IntArray);
-                    SearchPicker(IntArray, Direction);
+                    Sort.BackSorter(IntArray, Direction);  //Sort method is called, same for every case below.
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write("Total amount of steps: ");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine(Sort.Efficiency);
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine(); 
+                    Console.WriteLine("Press any key to continue.");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ReadLine();
+                    Printing.print(IntArray);               // Array printing method is called to print sorted array and 'nth values.
+                    SearchPicker(IntArray, Direction);      // Search method is called with sorted array as argument. 
                     return;
-                }
+                }                                           // All following blocks of code do the same  as above.
                 if (SortChoice == 2)
                 {
                     Sort.PushSorter(IntArray, Direction);
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write("Total amount of steps: ");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine(Sort.Efficiency);
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine(); 
+                    Console.WriteLine("Press any key to continue.");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ReadLine();
                     Printing.print(IntArray);
                     SearchPicker(IntArray, Direction);
                     return;
@@ -234,6 +256,8 @@ namespace Assessment_1_Algo
                 SorterPicker(IntArray, Direction);
             }
         }
+        
+                    // Same logic as above, user choice of type of searching algorithm.
         static void SearchPicker(int[] IntArray,int Direction)
         {
             try
@@ -244,7 +268,7 @@ namespace Assessment_1_Algo
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("1: Binary search.");
                 Console.WriteLine("2: Sequential search.");
-                int SearchType = Convert.ToInt32(Console.ReadLine());
+                int SearchType = Convert.ToInt32(Console.ReadLine());       
                 Console.WriteLine();            
                 if(SearchType == 1)
                 {
@@ -254,7 +278,7 @@ namespace Assessment_1_Algo
                     Console.ForegroundColor = ConsoleColor.White;
                     int Number = Convert.ToInt32(Console.ReadLine());
                     Console.WriteLine();
-                    Search.search(IntArray, Direction,SearchType, Number);
+                    Search.search(IntArray, Direction,SearchType, Number);          // Calls helper method search with search direction search type and value to be searched as arguments.
                     Console.ForegroundColor = ConsoleColor.Red;
                     int TotalSteps = Search.EfficiencySearch + Search.HelperSteps;
                     Console.Write("Total amount of search algorithm steps: ");
@@ -262,7 +286,7 @@ namespace Assessment_1_Algo
                     Console.WriteLine(Search.EfficiencySearch);
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.Write("Total amount of search helper method steps: ");
-                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.ForegroundColor = ConsoleColor.Green;                           // This block prints operations steps taken to find values. The following block does the same.
                     Console.WriteLine(Search.HelperSteps);
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.Write("Total Steps combined: ");
