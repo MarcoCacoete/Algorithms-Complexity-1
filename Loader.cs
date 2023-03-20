@@ -183,7 +183,7 @@ namespace Assessment_1_Algo
                     Console.WriteLine(Sort.Efficiency);
                     Console.ForegroundColor = ConsoleColor.Blue;
                     Console.WriteLine(); 
-                    Console.WriteLine("Press any key to continue.");
+                    Console.WriteLine("Press enter to continue.");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.ReadLine();
                     Printing.print(IntArray);               // Array printing method is called to print sorted array and 'nth values.
@@ -199,7 +199,7 @@ namespace Assessment_1_Algo
                     Console.WriteLine(Sort.Efficiency);
                     Console.ForegroundColor = ConsoleColor.Blue;
                     Console.WriteLine(); 
-                    Console.WriteLine("Press any key to continue.");
+                    Console.WriteLine("Press enter to continue.");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.ReadLine();
                     Printing.print(IntArray);
@@ -215,7 +215,7 @@ namespace Assessment_1_Algo
                     Console.WriteLine(Sort.Efficiency);
                     Console.ForegroundColor = ConsoleColor.Blue;
                     Console.WriteLine(); 
-                    Console.WriteLine("Press any key to continue.");
+                    Console.WriteLine("Press enter to continue.");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.ReadLine();  
                     Printing.print(IntArray);
@@ -231,7 +231,7 @@ namespace Assessment_1_Algo
                     Console.WriteLine(Sort.Efficiency);
                     Console.ForegroundColor = ConsoleColor.Blue;
                     Console.WriteLine(); 
-                    Console.WriteLine("Press any key to continue.");
+                    Console.WriteLine("Press enter to continue.");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.ReadLine();  
                     Printing.print(IntArray);
@@ -294,7 +294,7 @@ namespace Assessment_1_Algo
                     Console.WriteLine(+ TotalSteps);
                     Console.WriteLine();
                     Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.WriteLine("Press any key to continue.");
+                    Console.WriteLine("Press enter to continue.");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.ReadLine(); 
                     return;
@@ -323,7 +323,7 @@ namespace Assessment_1_Algo
                     Console.WriteLine(+ TotalSteps);
                     Console.WriteLine();
                     Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.WriteLine("Press any key to continue.");
+                    Console.WriteLine("Press enter to continue.");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.ReadLine(); 
                     return;
