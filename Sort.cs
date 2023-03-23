@@ -178,8 +178,8 @@ namespace Assessment_1_Algo
             j = 0;
             int k = Left;
             while (i < LeftArrayLength && j < RightArrayLength)  // We then proceed to compare the elements in the temporary array 
-            {                                                    // objects and swap their positions if the element in the left array index  is less than or equal
-                Efficiency++;                                    // to the element in the right array index object while storing them in the in the array k index in the merged array:
+            {                                                    // and swap their positions if the element in the left array index  is less than or equal
+                Efficiency++;                                    // to the element in the right array index object while storing them in the in the array k index in the merged array.
                 if (LeftTemporaryArray[i] <= RightTemporaryArray[j])
                 {
                     Efficiency++;
@@ -193,7 +193,7 @@ namespace Assessment_1_Algo
             }
             while (i < LeftArrayLength)
             {
-                Efficiency++;                                   // The process completes by copying remaining elements from the left temporary array index  and the right temporary index objects into the merged array:
+                Efficiency++;                                   // The process completes by copying remaining elements from the left temporary array index  and the right temporary index objects into the merged array.
                 IntArray[k++] = LeftTemporaryArray[i++];
             }
             while (j < RightArrayLength)
@@ -218,7 +218,7 @@ namespace Assessment_1_Algo
             }
         }
         
-                    // Entry point for sorting method. First, the method uses the left and right integer values to define the index of the element in the middle of the array.
+                    // Entry point for sorting method. First, the method uses left and right integer values to define the index of the element in the middle of the array.
                     // The method recursively calls itself to subdivide the right and left sub arrays. The merging process commences after each array has one element.
         public static int[] SortArrayAscending(int[] IntArray, int Left, int Right)
         {
@@ -306,9 +306,9 @@ namespace Assessment_1_Algo
                     // Quick sort method takes three arguments for array, left and right index.
             static int QuickSortAscending(int[] IntArray, int LeftIndex, int RightIndex)
             {           
-                var i = LeftIndex;                  // starts by assigning the values of the leftIndex and rightIndex to new variables i and j, which are going to be used when iterating.
+                var i = LeftIndex;                  // Starts by assigning the values of the left index and right index to new variables i and j, which are going to be used when iterating.
                 var j = RightIndex;
-                var Pivot = IntArray[LeftIndex];    // Next, we set the pivot as the leftmost element in the array:
+                var Pivot = IntArray[LeftIndex];    // Next, we set the pivot as the leftmost element in the array.
 
                 while (i <= j)                         // The algorithm starts placing the pivot element at its correct position in the sorted array
                 {                                      // by dividing the array into two lists in the outermost while loop. Our goal is to place all
@@ -320,7 +320,7 @@ namespace Assessment_1_Algo
                     }
                     while (IntArray[j] > Pivot)
                     {
-                        Efficiency++;                   // If the elements to the right of the pivot are greater than the pivot element, we skip their positions as we loop through the right subarray:
+                        Efficiency++;                   // If the elements to the right of the pivot are greater than the pivot element, we skip their positions as we loop through the right subarray.
                         j--;
                     }
                     if (i <= j)
